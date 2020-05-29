@@ -1,0 +1,10 @@
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\bin\Debug\MindMap.exe.config
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\bin\Debug\MindMap.exe
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\bin\Debug\MindMap.pdb
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\obj\Debug\MindMap.csprojAssemblyReference.cache
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\obj\Debug\MindMap.Form1.resources
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\obj\Debug\MindMap.Properties.Resources.resources
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\obj\Debug\MindMap.csproj.GenerateResource.cache
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\obj\Debug\MindMap.csproj.CoreCompileInputs.cache
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\obj\Debug\MindMap.exe
+D:\Studying\HK4-2020\Project Test\MindMap\MindMap\obj\Debug\MindMap.pdb
