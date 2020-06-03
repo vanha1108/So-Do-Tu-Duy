@@ -120,13 +120,7 @@ namespace So_Do_Tu_Duy
 
         private void btnSubTopic_Click(object sender, EventArgs e)
         {
-            Button btn = new Button();
-            btn.Visible = true;
-            btn.Size = new Size(150, 150);
-            btn.Location = new Point(200, 200);
-            btn.Text = "Tester";
-
-            ptbDraw.Controls.Add(btn);
+            
         }
      
 
