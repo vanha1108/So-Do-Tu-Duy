@@ -122,6 +122,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1182, 40);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -137,7 +138,9 @@
             this.ptbDraw.Size = new System.Drawing.Size(1182, 673);
             this.ptbDraw.TabIndex = 2;
             this.ptbDraw.TabStop = false;
+            this.ptbDraw.Click += new System.EventHandler(this.ptbDraw_Click);
             this.ptbDraw.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseDoubleClick);
+            this.ptbDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseDown);
             // 
             // btnCloseMap
             // 

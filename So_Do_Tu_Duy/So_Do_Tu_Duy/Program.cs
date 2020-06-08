@@ -16,7 +16,7 @@ namespace So_Do_Tu_Duy
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmMap());
         }
     }
 }

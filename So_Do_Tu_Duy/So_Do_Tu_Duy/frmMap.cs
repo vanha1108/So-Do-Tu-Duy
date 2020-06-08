@@ -20,8 +20,11 @@ namespace So_Do_Tu_Duy
         Bitmap bm;
         Graphics g1, g2;
         SolidBrush myBrush;
+        DrawObject myObj;
 
         List<DrawObject> lstObj = new List<DrawObject>();           // danh sách hình
+
+        bool isPress = false;
 
         public frmMap()
         {
@@ -34,7 +37,6 @@ namespace So_Do_Tu_Duy
             myBrush = new SolidBrush(myColor);
             g2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
-            Draw_Initialize();
         }
 
         private void btnCloseMap_Click(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace So_Do_Tu_Duy
 
         }
 
-        public  void Draw_Initialize()
+        public void Draw_Initialize()
         {
             DrawObject r = new Rec();
 
@@ -63,16 +65,17 @@ namespace So_Do_Tu_Duy
             r.init();
             r.Draw(this.g1, this.lstObj[0].myPen, this.lstObj[0].myColor);
             g1.DrawImage(bm, 0, 0);
+            
         }
 
         private void frmMap_Load(object sender, EventArgs e)
         {
-            
+            Draw_Initialize();
         }
 
         private void btnTopic_Click(object sender, EventArgs e)
         {
-            Draw_Initialize();
+            
         }
 
         public bool Find_Point(DrawObject obj, Point p)
@@ -120,9 +123,39 @@ namespace So_Do_Tu_Duy
 
         private void btnSubTopic_Click(object sender, EventArgs e)
         {
-            
+            myObj = new Eclipse();
+            isPress = true;
         }
-     
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void ptbDraw_Click(object sender, EventArgs e)
+        {
+            Draw_Initialize();
+        }
+
+        private void ptbDraw_MouseDown(object sender, MouseEventArgs e)
+        {
+            if ( isPress)
+            {
+                myObj.p1 = e.Location;
+                myObj.myColor = myColor;
+                myObj.mySize = 2;
+                myObj.type = 3;
+                myObj.myPen = myPen;
+                myObj.myBrush = myBrush;
+
+                this.lstObj.Add(myObj);
+
+                myObj.p2 = new Point( myObj.p1.X+150,myObj.p1.Y+100);
+                myObj.init();
+                myObj.Draw(this.g1, this.lstObj[1].myPen, this.lstObj[1].myColor);
+                g1.DrawImage(bm, 0, 0);
+            }
+        }
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)
         {

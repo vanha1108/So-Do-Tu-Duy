@@ -14,6 +14,7 @@ namespace So_Do_Tu_Duy
         List<Curve> lstCur = new List<Curve>();
         public SubTopic()
         {
+            isSelect = true;
         }
         public SubTopic(Point p1, Point p2)
         {
@@ -22,7 +23,6 @@ namespace So_Do_Tu_Duy
         }
         public override void Draw(Graphics myGp, Pen myPen, Color myColor)
         {
-
             myGp.DrawEllipse(myPen, this.p1.X, this.p1.Y, this.p2.X - this.p1.X, this.p2.Y - this.p1.Y);
             if ( isFill == true) myGp.FillEllipse(myBrush, this.p1.X, this.p1.Y, this.p2.X - this.p1.X, this.p2.Y - this.p1.Y);
         }
