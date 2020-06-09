@@ -112,7 +112,7 @@ namespace So_Do_Tu_Duy
                         int cr = Math.Abs(lstObj[i].p1.X - lstObj[i].p2.X);
                         int cc = Math.Abs(lstObj[i].p1.Y - lstObj[i].p2.Y);
                         txt.Size = new Size(cr - 3 , cc - 3);
-                        txt.Text = "test";
+                        txt.Text = "Ghi nội dung của Topic";
                         txt.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
                         txt.SelectionAlignment = HorizontalAlignment.Center;
                         txt.BorderStyle = BorderStyle.None;                     
@@ -124,6 +124,7 @@ namespace So_Do_Tu_Duy
         private void btnSubTopic_Click(object sender, EventArgs e)
         {
             myObj = new Eclipse();
+            myObj.type = 2;
             isPress = true;
         }
 
@@ -144,7 +145,6 @@ namespace So_Do_Tu_Duy
                 myObj.p1 = e.Location;
                 myObj.myColor = myColor;
                 myObj.mySize = 2;
-                myObj.type = 3;
                 myObj.myPen = myPen;
                 myObj.myBrush = myBrush;
 
@@ -155,6 +155,12 @@ namespace So_Do_Tu_Duy
                 myObj.Draw(this.g1, this.lstObj[1].myPen, this.lstObj[1].myColor);
                 g1.DrawImage(bm, 0, 0);
             }
+        }
+
+        private void btnRelationship_Click(object sender, EventArgs e)
+        {
+            DrawObject cv = new Curve();
+            isPress = true;
         }
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)

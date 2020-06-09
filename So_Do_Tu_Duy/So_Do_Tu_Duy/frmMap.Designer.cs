@@ -81,6 +81,7 @@
             this.btnRelationship.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRelationship.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRelationship.UseVisualStyleBackColor = true;
+            this.btnRelationship.Click += new System.EventHandler(this.btnRelationship_Click);
             // 
             // btnTopic
             // 
