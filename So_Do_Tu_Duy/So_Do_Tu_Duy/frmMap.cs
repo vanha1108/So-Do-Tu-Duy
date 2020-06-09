@@ -163,6 +163,17 @@ namespace So_Do_Tu_Duy
             isPress = true;
         }
 
+        private void outlinerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ucOutliner1.Show();
+            ucOutliner1.BringToFront();
+        }
+
+        private void mindMapToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ucOutliner1.Hide();
+        }
+
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult dialog = MessageBox.Show("Bạn có muốn đóng cửa sổ hiện tại ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

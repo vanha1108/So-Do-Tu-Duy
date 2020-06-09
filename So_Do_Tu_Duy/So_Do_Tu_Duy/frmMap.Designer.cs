@@ -38,6 +38,9 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ptbDraw = new System.Windows.Forms.PictureBox();
             this.btnCloseMap = new System.Windows.Forms.Button();
+            this.mindMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.outlinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ucOutliner1 = new So_Do_Tu_Duy.UCOutliner();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbDraw)).BeginInit();
@@ -117,7 +120,9 @@
             this.menuStrip1.BackColor = System.Drawing.Color.LightGray;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.mindMapToolStripMenuItem,
+            this.outlinerToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1182, 40);
@@ -155,11 +160,35 @@
             this.btnCloseMap.UseVisualStyleBackColor = true;
             this.btnCloseMap.Click += new System.EventHandler(this.btnCloseMap_Click);
             // 
+            // mindMapToolStripMenuItem
+            // 
+            this.mindMapToolStripMenuItem.Name = "mindMapToolStripMenuItem";
+            this.mindMapToolStripMenuItem.Size = new System.Drawing.Size(91, 36);
+            this.mindMapToolStripMenuItem.Text = "Mind Map";
+            this.mindMapToolStripMenuItem.Click += new System.EventHandler(this.mindMapToolStripMenuItem_Click);
+            // 
+            // outlinerToolStripMenuItem
+            // 
+            this.outlinerToolStripMenuItem.Name = "outlinerToolStripMenuItem";
+            this.outlinerToolStripMenuItem.Size = new System.Drawing.Size(76, 36);
+            this.outlinerToolStripMenuItem.Text = "Outliner";
+            this.outlinerToolStripMenuItem.Click += new System.EventHandler(this.outlinerToolStripMenuItem_Click);
+            // 
+            // ucOutliner1
+            // 
+            this.ucOutliner1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ucOutliner1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucOutliner1.Location = new System.Drawing.Point(0, 130);
+            this.ucOutliner1.Name = "ucOutliner1";
+            this.ucOutliner1.Size = new System.Drawing.Size(1182, 673);
+            this.ucOutliner1.TabIndex = 4;
+            // 
             // frmMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 803);
+            this.Controls.Add(this.ucOutliner1);
             this.Controls.Add(this.btnCloseMap);
             this.Controls.Add(this.ptbDraw);
             this.Controls.Add(this.panel1);
@@ -190,5 +219,8 @@
         private System.Windows.Forms.Button btnSubTopic;
         private System.Windows.Forms.Button btnTopic;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.ToolStripMenuItem mindMapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem outlinerToolStripMenuItem;
+        private UCOutliner ucOutliner1;
     }
 }

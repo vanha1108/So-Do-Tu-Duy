@@ -23,7 +23,6 @@ C:\Users\TT\Desktop\LT_Windows\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\So_Do_Tu_Duy.exe.config
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\So_Do_Tu_Duy.exe
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\So_Do_Tu_Duy.pdb
-C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csprojAssemblyReference.cache
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.frmMain.resources
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.frmMap.resources
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.Properties.Resources.resources
@@ -31,3 +30,4 @@ C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csp
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csproj.CoreCompileInputs.cache
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.exe
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.pdb
+C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.UCOutliner.resources
