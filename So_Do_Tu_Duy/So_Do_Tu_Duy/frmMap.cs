@@ -19,7 +19,7 @@ namespace So_Do_Tu_Duy
         // Phần Graphic
         int typeObj = -1;
         bool isDraw = true;
-    
+
         Bitmap bm;
         Graphics g1, g2;
         Pen myPen;
@@ -33,7 +33,8 @@ namespace So_Do_Tu_Duy
         {
             InitializeComponent();
             g2 = ptbDraw.CreateGraphics();
-            bm = new Bitmap(ptbDraw.Width, ptbDraw.Height);
+            ptbDraw.ClientSize = new Size(1500, 1500);
+            bm = new Bitmap(ptbDraw.ClientSize.Width, ptbDraw.ClientSize.Height,ptbDraw.CreateGraphics());
             g1 = Graphics.FromImage(bm);
 
             solidBrush = new SolidBrush(Color.Black);
@@ -159,8 +160,7 @@ namespace So_Do_Tu_Duy
             {
                 if(shape.Name=="Root")
                 {
-                    DrawObj((Root)shape);
-                   
+                    DrawObj((Root)shape);              
                 }
                 else
                 {
@@ -198,7 +198,7 @@ namespace So_Do_Tu_Duy
                 {
                     Rec rec = new Rec("Rectangle", e.Location, DefineSize.Width, DefineSize.Height);
                     root.lstObj.Add(rec);
-                    isDraw = false;
+                    isDraw = false;               
                 }
                 else if (typeObj == 3)
                 {
@@ -235,6 +235,8 @@ namespace So_Do_Tu_Duy
             }
 
         }
+
+        
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)
         {
