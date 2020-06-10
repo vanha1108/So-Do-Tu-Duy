@@ -9,21 +9,14 @@ using System.Threading.Tasks;
 
 namespace So_Do_Tu_Duy
 {
-    class Eclipse : DrawObject
+    public class Eclipse : DrawObject
     {
-        public Eclipse()
+        public Eclipse(string name, Point point, int witdh, int height):base(name, point, witdh, height)
         { }
 
-        public Eclipse(Point p1, Point p2)
+        public override void Draw(Graphics myGp, Pen myPen )
         {
-            base.p1 = p1;
-            base.p2 = p2;
-        }
-        public override void Draw(Graphics myGp, Pen myPen, Color myColor)
-        {
-            myPen.DashStyle = DashStyle.Solid;
-            myGp.DrawEllipse(myPen, this.p1.X, this.p1.Y, this.p2.X - this.p1.X, this.p2.Y - this.p1.Y);
-            if (isFill == true) myGp.FillEllipse(myBrush, this.p1.X, this.p1.Y, this.p2.X - this.p1.X, this.p2.Y - this.p1.Y);
+            myGp.DrawEllipse(myPen, base.Point.X, base.Point.Y, base.Witdh, base.Height);
         }
     }
 }

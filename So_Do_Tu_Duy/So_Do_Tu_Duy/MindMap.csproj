@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Curve.cs" />
+    <Compile Include="DefineSize.cs" />
     <Compile Include="DrawObject.cs" />
     <Compile Include="Eclipse.cs" />
     <Compile Include="frmMain.cs">
@@ -61,10 +62,16 @@
     <Compile Include="frmMap.Designer.cs">
       <DependentUpon>frmMap.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOutliner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOutliner.Designer.cs">
+      <DependentUpon>frmOutliner.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rec.cs" />
-    <Compile Include="SubTopic.cs" />
+    <Compile Include="Root.cs" />
     <Compile Include="UCOutliner.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -76,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMap.resx">
       <DependentUpon>frmMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOutliner.resx">
+      <DependentUpon>frmOutliner.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Image\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,3 +31,4 @@ C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csp
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.exe
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.pdb
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.UCOutliner.resources
+C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.frmOutliner.resources

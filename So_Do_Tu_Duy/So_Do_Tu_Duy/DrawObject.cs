@@ -10,49 +10,24 @@ namespace So_Do_Tu_Duy
 {
     public abstract class DrawObject
     {
-        public Point p1 = new Point(0, 0);
-        public Point p2 = new Point(0, 0);
-        public Color myColor;
-        public int mySize;
-        public Pen myPen;
-        public SolidBrush myBrush;
-        public int type = 0;
-        public System.Drawing.Drawing2D.DashStyle style;
-        public int typeBrush;                       // kiểu nét vẽ
-        public bool isSelect = false;               // chưa được chọn
-        public bool isFill = false;                 // chưa được tô màu
+        public string Name;
 
-        public void init()
+        public Point Point = new Point(0, 0);
+
+        public int Witdh;
+
+        public int Height;
+
+        public bool isSelect = false;
+
+        public DrawObject ( string name, Point point, int witdh, int height)
         {
-            myPen.Color = this.myColor;
-            myPen.Width = this.mySize;
+            Name = name;
+            Point = point;
+            Witdh = witdh;
+            Height = height;
         }
 
-        public Pen choosePen(int x)
-        {
-            if (type == 0)
-            {
-                myPen.DashStyle = DashStyle.Solid;
-            }
-            else if (type == 1)
-            {
-                myPen.DashStyle = DashStyle.Dot;
-            }
-            else if (type == 2)
-            {
-                myPen.DashStyle = DashStyle.Dash;
-            }
-            else if (type == 3)
-            {
-                myPen.DashStyle = DashStyle.DashDot;
-            }
-            else if (type == 4)
-            {
-                myPen.DashStyle = DashStyle.DashDotDot;
-            }
-            return myPen;
-        }
-
-        public abstract void Draw(Graphics myGp, Pen myPen, Color myColor);
+        public abstract void Draw(Graphics myGp, Pen myPen);
     }
 }

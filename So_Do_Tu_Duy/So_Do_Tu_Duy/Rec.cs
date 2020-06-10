@@ -14,25 +14,14 @@ namespace So_Do_Tu_Duy
 {
     class Rec : DrawObject
     {
-        public Rec()
+        public Rec(string name, Point point, int witdh, int height):base(name, point, witdh, height)
         {
         }
-        public Rec(Point p1, Point p2)
-        {
-            base.p1 = p1;
-            base.p2 = p2;
-        }
-        public override void Draw(Graphics myGp, Pen myPen, Color myColor)
-        {
-            myPen.DashStyle = DashStyle.Solid;
 
-            int x = Math.Min(this.p1.X, this.p2.X);
-            int y = Math.Min(this.p1.Y, this.p2.Y);
-            int width = Math.Abs(this.p1.X - this.p2.X);
-            int height = Math.Abs(this.p1.Y - this.p2.Y);
-            Rectangle _rect = new Rectangle(x, y, width, height);
+        public override void Draw(Graphics myGp, Pen myPen )
+        {
+            Rectangle _rect = new Rectangle(base.Point.X, base.Point.Y, base.Witdh, base.Height);
             myGp.DrawRectangle(myPen, _rect);
-            if (isFill == true) myGp.FillRectangle(myBrush, _rect);
         }
     }
 }
