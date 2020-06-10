@@ -222,21 +222,19 @@ namespace So_Do_Tu_Duy
             if (isDraw == true)
             {
                  if (typeObj == 3)
-                {
+                 {
                     Curve cur = new Curve("Curve", point, Math.Abs(e.Location.X - point.X), Math.Abs(e.Location.Y - point.Y));
                     cur.p2 = e.Location;
                     root.lstObj.Add(cur);
                     isDraw = false;
-                }
+                 }
 
                 DrawObj(root);
                 g2.DrawImage(bm, 0, 0);
                 ResetColor();
             }
 
-        }
-
-        
+        }   
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)
         {
