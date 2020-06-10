@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Circle.cs" />
     <Compile Include="Curve.cs" />
     <Compile Include="DefineSize.cs" />
     <Compile Include="DrawObject.cs" />

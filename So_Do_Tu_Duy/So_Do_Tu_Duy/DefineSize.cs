@@ -13,5 +13,6 @@ namespace So_Do_Tu_Duy
 
         public static int Width = 70;
         public static int Height = 40;
+        public static int radius = 70;
     }
 }

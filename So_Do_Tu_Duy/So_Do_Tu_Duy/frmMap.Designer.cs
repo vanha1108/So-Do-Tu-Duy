@@ -162,6 +162,8 @@
             this.ptbDraw.TabStop = false;
             this.ptbDraw.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseClick);
             this.ptbDraw.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseDoubleClick);
+            this.ptbDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseDown);
+            this.ptbDraw.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseUp);
             // 
             // btnCloseMap
             // 
