@@ -16,7 +16,6 @@ namespace So_Do_Tu_Duy
     public partial class frmMap : Form
     {
         Point point;
-        // Phần Graphic
         int typeObj = -1;
         bool isDraw = true;
 
