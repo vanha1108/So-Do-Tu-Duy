@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +55,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\DBMindMap.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBMindMap.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBMindMap.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBMindMap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBMindMap.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBMindMap.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DRAWOBJ.cs">
+      <DependentUpon>DBMindMap.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Circle.cs" />
     <Compile Include="Model\Curve.cs" />
     <Compile Include="Model\DefineSize.cs" />
     <Compile Include="Model\DrawObject.cs" />
     <Compile Include="Model\Eclipse.cs" />
+    <Compile Include="Model\PROJECT.cs">
+      <DependentUpon>DBMindMap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sysdiagram.cs">
+      <DependentUpon>DBMindMap.tt</DependentUpon>
+    </Compile>
     <Compile Include="View\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +133,14 @@
     <EmbeddedResource Include="View\UCOutliner.resx">
       <DependentUpon>UCOutliner.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\DBMindMap.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBMindMap.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DBMindMap.edmx.diagram">
+      <DependentUpon>DBMindMap.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -116,6 +157,21 @@
   <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="Image\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\DBMindMap.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBMindMap.Context.cs</LastGenOutput>
+      <DependentUpon>DBMindMap.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DBMindMap.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBMindMap.edmx</DependentUpon>
+      <LastGenOutput>DBMindMap.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
