@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MindMapModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DRAWOBJ">
+    <Key>
+      <PropertyRef Name="idObj" />
+    </Key>
+    <Property Name="idObj" Type="int" Nullable="false" />
+    <Property Name="idParent" Type="int" Nullable="false" />
+    <Property Name="idProject" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROJECT">
+    <Key>
+      <PropertyRef Name="idProject" />
+    </Key>
+    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="note" Type="varchar" MaxLength="255" />
+    <Property Name="img" Type="image" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK__DRAWOBJ__idParen__267ABA7A">
+    <End Role="DRAWOBJ" Type="Self.DRAWOBJ" Multiplicity="1" />
+    <End Role="DRAWOBJ1" Type="Self.DRAWOBJ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DRAWOBJ">
+        <PropertyRef Name="idObj" />
+      </Principal>
+      <Dependent Role="DRAWOBJ1">
+        <PropertyRef Name="idParent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROJECT_DRAWOBJ">
+    <End Role="DRAWOBJ" Type="Self.DRAWOBJ" Multiplicity="1" />
+    <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DRAWOBJ">
+        <PropertyRef Name="idObj" />
+      </Principal>
+      <Dependent Role="PROJECT">
+        <PropertyRef Name="idProject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MindMapModelStoreContainer">
+    <EntitySet Name="DRAWOBJ" EntityType="Self.DRAWOBJ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__DRAWOBJ__idParen__267ABA7A" Association="Self.FK__DRAWOBJ__idParen__267ABA7A">
+      <End Role="DRAWOBJ" EntitySet="DRAWOBJ" />
+      <End Role="DRAWOBJ1" EntitySet="DRAWOBJ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROJECT_DRAWOBJ" Association="Self.FK_PROJECT_DRAWOBJ">
+      <End Role="DRAWOBJ" EntitySet="DRAWOBJ" />
+      <End Role="PROJECT" EntitySet="PROJECT" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
