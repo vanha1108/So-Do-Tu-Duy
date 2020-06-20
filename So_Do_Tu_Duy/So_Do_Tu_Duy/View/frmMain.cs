@@ -28,7 +28,7 @@ namespace So_Do_Tu_Duy
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            //this.Hide();
+            this.Hide();
             frmMap formMap = new frmMap();
             formMap.ShowDialog();
         }

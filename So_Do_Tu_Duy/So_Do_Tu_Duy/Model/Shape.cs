@@ -12,12 +12,16 @@ namespace So_Do_Tu_Duy.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PROJECT
+    public partial class Shape
     {
-        public int idProject { get; set; }
-        public string note { get; set; }
-        public byte[] img { get; set; }
+        public int ID { get; set; }
+        public string NameShape { get; set; }
+        public double LocationX { get; set; }
+        public Nullable<double> Witdh { get; set; }
+        public Nullable<double> Height { get; set; }
+        public string Descripton { get; set; }
+        public int IDPro { get; set; }
     
-        public virtual DRAWOBJ DRAWOBJ { get; set; }
+        public virtual ProjectShape ProjectShape { get; set; }
     }
 }

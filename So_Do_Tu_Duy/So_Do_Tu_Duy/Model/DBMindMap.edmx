@@ -4,22 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MindMapModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="DRAWOBJ">
+    <Schema Namespace="MindMapModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ProjectShape">
           <Key>
-            <PropertyRef Name="idObj" />
+            <PropertyRef Name="IDPro" />
           </Key>
-          <Property Name="idObj" Type="int" Nullable="false" />
-          <Property Name="idParent" Type="int" Nullable="false" />
-          <Property Name="idProject" Type="int" Nullable="false" />
+          <Property Name="IDPro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="PROJECT">
+        <EntityType Name="Shape">
           <Key>
-            <PropertyRef Name="idProject" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="idProject" Type="int" Nullable="false" />
-          <Property Name="note" Type="varchar" MaxLength="255" />
-          <Property Name="img" Type="image" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameShape" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="LocationX" Type="float" Nullable="false" />
+          <Property Name="Witdh" Type="float" />
+          <Property Name="Height" Type="float" />
+          <Property Name="Descripton" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="IDPro" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -31,147 +34,118 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK__DRAWOBJ__idParen__267ABA7A">
-          <End Role="DRAWOBJ" Type="Self.DRAWOBJ" Multiplicity="1" />
-          <End Role="DRAWOBJ1" Type="Self.DRAWOBJ" Multiplicity="*" />
+        <Association Name="FK__Shape__IDPro__35BCFE0A">
+          <End Role="ProjectShape" Type="Self.ProjectShape" Multiplicity="1" />
+          <End Role="Shape" Type="Self.Shape" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DRAWOBJ">
-              <PropertyRef Name="idObj" />
+            <Principal Role="ProjectShape">
+              <PropertyRef Name="IDPro" />
             </Principal>
-            <Dependent Role="DRAWOBJ1">
-              <PropertyRef Name="idParent" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PROJECT_DRAWOBJ">
-          <End Role="DRAWOBJ" Type="Self.DRAWOBJ" Multiplicity="1" />
-          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="DRAWOBJ">
-              <PropertyRef Name="idObj" />
-            </Principal>
-            <Dependent Role="PROJECT">
-              <PropertyRef Name="idProject" />
+            <Dependent Role="Shape">
+              <PropertyRef Name="IDPro" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MindMapModelStoreContainer">
-          <EntitySet Name="DRAWOBJ" EntityType="Self.DRAWOBJ" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectShape" EntityType="Self.ProjectShape" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shape" EntityType="Self.Shape" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__DRAWOBJ__idParen__267ABA7A" Association="Self.FK__DRAWOBJ__idParen__267ABA7A">
-            <End Role="DRAWOBJ" EntitySet="DRAWOBJ" />
-            <End Role="DRAWOBJ1" EntitySet="DRAWOBJ" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PROJECT_DRAWOBJ" Association="Self.FK_PROJECT_DRAWOBJ">
-            <End Role="DRAWOBJ" EntitySet="DRAWOBJ" />
-            <End Role="PROJECT" EntitySet="PROJECT" />
+          <AssociationSet Name="FK__Shape__IDPro__35BCFE0A" Association="Self.FK__Shape__IDPro__35BCFE0A">
+            <End Role="ProjectShape" EntitySet="ProjectShape" />
+            <End Role="Shape" EntitySet="Shape" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MindMapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="DRAWOBJ">
+        <EntityContainer Name="DBMindMapEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ProjectShapes" EntityType="MindMapModel.ProjectShape" />
+          <EntitySet Name="Shapes" EntityType="MindMapModel.Shape" />
+          <EntitySet Name="sysdiagrams" EntityType="MindMapModel.sysdiagram" />
+          <AssociationSet Name="FK__Shape__IDPro__35BCFE0A" Association="MindMapModel.FK__Shape__IDPro__35BCFE0A">
+            <End Role="ProjectShape" EntitySet="ProjectShapes" />
+            <End Role="Shape" EntitySet="Shapes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ProjectShape">
           <Key>
-            <PropertyRef Name="idObj" />
+            <PropertyRef Name="IDPro" />
           </Key>
-          <Property Name="idObj" Type="Int32" Nullable="false" />
-          <Property Name="idParent" Type="Int32" Nullable="false" />
-          <Property Name="idProject" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DRAWOBJ1" Relationship="Self.FK__DRAWOBJ__idParen__267ABA7A" FromRole="DRAWOBJ" ToRole="DRAWOBJ1" />
-          <NavigationProperty Name="DRAWOBJ2" Relationship="Self.FK__DRAWOBJ__idParen__267ABA7A" FromRole="DRAWOBJ1" ToRole="DRAWOBJ" />
-          <NavigationProperty Name="PROJECT" Relationship="Self.FK_PROJECT_DRAWOBJ" FromRole="DRAWOBJ" ToRole="PROJECT" />
+          <Property Name="IDPro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shapes" Relationship="MindMapModel.FK__Shape__IDPro__35BCFE0A" FromRole="ProjectShape" ToRole="Shape" />
         </EntityType>
-        <EntityType Name="PROJECT">
+        <EntityType Name="Shape">
           <Key>
-            <PropertyRef Name="idProject" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="idProject" Type="Int32" Nullable="false" />
-          <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="img" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="DRAWOBJ" Relationship="Self.FK_PROJECT_DRAWOBJ" FromRole="PROJECT" ToRole="DRAWOBJ" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameShape" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="LocationX" Type="Double" Nullable="false" />
+          <Property Name="Witdh" Type="Double" />
+          <Property Name="Height" Type="Double" />
+          <Property Name="Descripton" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="IDPro" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProjectShape" Relationship="MindMapModel.FK__Shape__IDPro__35BCFE0A" FromRole="Shape" ToRole="ProjectShape" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK__DRAWOBJ__idParen__267ABA7A">
-          <End Role="DRAWOBJ" Type="Self.DRAWOBJ" Multiplicity="1" />
-          <End Role="DRAWOBJ1" Type="Self.DRAWOBJ" Multiplicity="*" />
+        <Association Name="FK__Shape__IDPro__35BCFE0A">
+          <End Type="MindMapModel.ProjectShape" Role="ProjectShape" Multiplicity="1" />
+          <End Type="MindMapModel.Shape" Role="Shape" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DRAWOBJ">
-              <PropertyRef Name="idObj" />
+            <Principal Role="ProjectShape">
+              <PropertyRef Name="IDPro" />
             </Principal>
-            <Dependent Role="DRAWOBJ1">
-              <PropertyRef Name="idParent" />
+            <Dependent Role="Shape">
+              <PropertyRef Name="IDPro" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PROJECT_DRAWOBJ">
-          <End Role="DRAWOBJ" Type="Self.DRAWOBJ" Multiplicity="1" />
-          <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="DRAWOBJ">
-              <PropertyRef Name="idObj" />
-            </Principal>
-            <Dependent Role="PROJECT">
-              <PropertyRef Name="idProject" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="DBMindMapEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="DRAWOBJs" EntityType="Self.DRAWOBJ" />
-          <EntitySet Name="PROJECTs" EntityType="Self.PROJECT" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <AssociationSet Name="FK__DRAWOBJ__idParen__267ABA7A" Association="Self.FK__DRAWOBJ__idParen__267ABA7A">
-            <End Role="DRAWOBJ" EntitySet="DRAWOBJs" />
-            <End Role="DRAWOBJ1" EntitySet="DRAWOBJs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PROJECT_DRAWOBJ" Association="Self.FK_PROJECT_DRAWOBJ">
-            <End Role="DRAWOBJ" EntitySet="DRAWOBJs" />
-            <End Role="PROJECT" EntitySet="PROJECTs" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MindMapModelStoreContainer" CdmEntityContainer="DBMindMapEntities">
-          <EntitySetMapping Name="DRAWOBJs">
-            <EntityTypeMapping TypeName="MindMapModel.DRAWOBJ">
-              <MappingFragment StoreEntitySet="DRAWOBJ">
-                <ScalarProperty Name="idObj" ColumnName="idObj" />
-                <ScalarProperty Name="idParent" ColumnName="idParent" />
-                <ScalarProperty Name="idProject" ColumnName="idProject" />
+          <EntitySetMapping Name="ProjectShapes">
+            <EntityTypeMapping TypeName="MindMapModel.ProjectShape">
+              <MappingFragment StoreEntitySet="ProjectShape">
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="IDPro" ColumnName="IDPro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PROJECTs">
-            <EntityTypeMapping TypeName="MindMapModel.PROJECT">
-              <MappingFragment StoreEntitySet="PROJECT">
-                <ScalarProperty Name="idProject" ColumnName="idProject" />
-                <ScalarProperty Name="note" ColumnName="note" />
-                <ScalarProperty Name="img" ColumnName="img" />
+          <EntitySetMapping Name="Shapes">
+            <EntityTypeMapping TypeName="MindMapModel.Shape">
+              <MappingFragment StoreEntitySet="Shape">
+                <ScalarProperty Name="IDPro" ColumnName="IDPro" />
+                <ScalarProperty Name="Descripton" ColumnName="Descripton" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Witdh" ColumnName="Witdh" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="NameShape" ColumnName="NameShape" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="MindMapModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

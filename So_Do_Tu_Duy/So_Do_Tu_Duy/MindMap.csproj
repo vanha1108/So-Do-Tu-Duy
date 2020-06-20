@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ProjectController.cs" />
     <Compile Include="Model\DBMindMap.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,15 +71,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBMindMap.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Model\DRAWOBJ.cs">
-      <DependentUpon>DBMindMap.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\Circle.cs" />
     <Compile Include="Model\Curve.cs" />
     <Compile Include="Model\DefineSize.cs" />
     <Compile Include="Model\DrawObject.cs" />
     <Compile Include="Model\Eclipse.cs" />
-    <Compile Include="Model\PROJECT.cs">
+    <Compile Include="Model\ProjectShape.cs">
+      <DependentUpon>DBMindMap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Shape.cs">
       <DependentUpon>DBMindMap.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagram.cs">
@@ -155,7 +156,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
     <Folder Include="Image\" />
   </ItemGroup>
   <ItemGroup>

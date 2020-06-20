@@ -25,8 +25,8 @@ namespace So_Do_Tu_Duy.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<DRAWOBJ> DRAWOBJs { get; set; }
-        public virtual DbSet<PROJECT> PROJECTs { get; set; }
+        public virtual DbSet<ProjectShape> ProjectShapes { get; set; }
+        public virtual DbSet<Shape> Shapes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

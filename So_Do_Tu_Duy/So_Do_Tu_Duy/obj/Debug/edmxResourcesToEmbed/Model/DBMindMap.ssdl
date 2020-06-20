@@ -1,20 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MindMapModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="DRAWOBJ">
+  <EntityType Name="ProjectShape">
     <Key>
-      <PropertyRef Name="idObj" />
+      <PropertyRef Name="IDPro" />
     </Key>
-    <Property Name="idObj" Type="int" Nullable="false" />
-    <Property Name="idParent" Type="int" Nullable="false" />
-    <Property Name="idProject" Type="int" Nullable="false" />
+    <Property Name="IDPro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="note" Type="nvarchar" MaxLength="255" />
   </EntityType>
-  <EntityType Name="PROJECT">
+  <EntityType Name="Shape">
     <Key>
-      <PropertyRef Name="idProject" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="idProject" Type="int" Nullable="false" />
-    <Property Name="note" Type="varchar" MaxLength="255" />
-    <Property Name="img" Type="image" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameShape" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="LocationX" Type="float" Nullable="false" />
+    <Property Name="Witdh" Type="float" />
+    <Property Name="Height" Type="float" />
+    <Property Name="Descripton" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="IDPro" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -26,41 +29,25 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK__DRAWOBJ__idParen__267ABA7A">
-    <End Role="DRAWOBJ" Type="Self.DRAWOBJ" Multiplicity="1" />
-    <End Role="DRAWOBJ1" Type="Self.DRAWOBJ" Multiplicity="*" />
+  <Association Name="FK__Shape__IDPro__35BCFE0A">
+    <End Role="ProjectShape" Type="Self.ProjectShape" Multiplicity="1" />
+    <End Role="Shape" Type="Self.Shape" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="DRAWOBJ">
-        <PropertyRef Name="idObj" />
+      <Principal Role="ProjectShape">
+        <PropertyRef Name="IDPro" />
       </Principal>
-      <Dependent Role="DRAWOBJ1">
-        <PropertyRef Name="idParent" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PROJECT_DRAWOBJ">
-    <End Role="DRAWOBJ" Type="Self.DRAWOBJ" Multiplicity="1" />
-    <End Role="PROJECT" Type="Self.PROJECT" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="DRAWOBJ">
-        <PropertyRef Name="idObj" />
-      </Principal>
-      <Dependent Role="PROJECT">
-        <PropertyRef Name="idProject" />
+      <Dependent Role="Shape">
+        <PropertyRef Name="IDPro" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="MindMapModelStoreContainer">
-    <EntitySet Name="DRAWOBJ" EntityType="Self.DRAWOBJ" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PROJECT" EntityType="Self.PROJECT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectShape" EntityType="Self.ProjectShape" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shape" EntityType="Self.Shape" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__DRAWOBJ__idParen__267ABA7A" Association="Self.FK__DRAWOBJ__idParen__267ABA7A">
-      <End Role="DRAWOBJ" EntitySet="DRAWOBJ" />
-      <End Role="DRAWOBJ1" EntitySet="DRAWOBJ" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PROJECT_DRAWOBJ" Association="Self.FK_PROJECT_DRAWOBJ">
-      <End Role="DRAWOBJ" EntitySet="DRAWOBJ" />
-      <End Role="PROJECT" EntitySet="PROJECT" />
+    <AssociationSet Name="FK__Shape__IDPro__35BCFE0A" Association="Self.FK__Shape__IDPro__35BCFE0A">
+      <End Role="ProjectShape" EntitySet="ProjectShape" />
+      <End Role="Shape" EntitySet="Shape" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

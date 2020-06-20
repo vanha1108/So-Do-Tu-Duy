@@ -40,6 +40,7 @@
             this.outlinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ptbDraw = new System.Windows.Forms.PictureBox();
             this.btnCloseMap = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbDraw)).BeginInit();
@@ -48,6 +49,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btnExport);
             this.panel1.Controls.Add(this.btnRelationship);
             this.panel1.Controls.Add(this.btnTopic);
@@ -70,6 +72,7 @@
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnRelationship
             // 
@@ -177,6 +180,16 @@
             this.btnCloseMap.UseVisualStyleBackColor = true;
             this.btnCloseMap.Click += new System.EventHandler(this.btnCloseMap_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(675, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(132, 31);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -214,5 +227,6 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ToolStripMenuItem mindMapToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outlinerToolStripMenuItem;
+        private System.Windows.Forms.Button button1;
     }
 }

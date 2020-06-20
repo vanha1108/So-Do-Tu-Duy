@@ -1,4 +1,6 @@
-﻿using System;
+﻿using So_Do_Tu_Duy.Controller;
+using So_Do_Tu_Duy.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -185,7 +187,7 @@ namespace So_Do_Tu_Duy
             frmMain formMain = new frmMain();
             formMain.Close();
             this.Close();
-            //Application.Exit();
+            Application.Exit();
 
         }
 
@@ -233,7 +235,20 @@ namespace So_Do_Tu_Duy
                 ResetColor();
             }
 
-        }   
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ProjectShape pro = new ProjectShape();
+            pro.note = frmOutliner.note;
+            ProjectController.AddProject(pro);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var x = ProjectController.getInforProject();
+            MessageBox.Show(x + "");
+        }
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -12,21 +12,18 @@ namespace So_Do_Tu_Duy.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class DRAWOBJ
+    public partial class ProjectShape
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DRAWOBJ()
+        public ProjectShape()
         {
-            this.DRAWOBJ1 = new HashSet<DRAWOBJ>();
+            this.Shapes = new HashSet<Shape>();
         }
     
-        public int idObj { get; set; }
-        public int idParent { get; set; }
-        public int idProject { get; set; }
+        public int IDPro { get; set; }
+        public string note { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DRAWOBJ> DRAWOBJ1 { get; set; }
-        public virtual DRAWOBJ DRAWOBJ2 { get; set; }
-        public virtual PROJECT PROJECT { get; set; }
+        public virtual ICollection<Shape> Shapes { get; set; }
     }
 }
