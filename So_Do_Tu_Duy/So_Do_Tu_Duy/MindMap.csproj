@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ProjectController.cs" />
+    <Compile Include="Controller\ShapeController.cs" />
     <Compile Include="Model\DBMindMap.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

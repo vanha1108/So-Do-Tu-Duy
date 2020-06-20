@@ -219,7 +219,6 @@ namespace So_Do_Tu_Duy
 
         private void ptbDraw_MouseUp(object sender, MouseEventArgs e)
         {
-
             if (isDraw == true)
             {
                  if (typeObj == 3)
@@ -234,7 +233,6 @@ namespace So_Do_Tu_Duy
                 g2.DrawImage(bm, 0, 0);
                 ResetColor();
             }
-
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -242,12 +240,6 @@ namespace So_Do_Tu_Duy
             ProjectShape pro = new ProjectShape();
             pro.note = frmOutliner.note;
             ProjectController.AddProject(pro);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var x = ProjectController.getInforProject();
-            MessageBox.Show(x + "");
         }
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)
