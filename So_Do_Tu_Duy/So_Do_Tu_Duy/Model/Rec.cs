@@ -14,7 +14,7 @@ namespace So_Do_Tu_Duy
 {
     class Rec : DrawObject
     {
-        public Rec(string name, Point point, int witdh, int height):base(name, point, witdh, height)
+        public Rec(int idObj, string name, Point point, int witdh, int height):base(idObj, name, point, witdh, height)
         {
         }
 

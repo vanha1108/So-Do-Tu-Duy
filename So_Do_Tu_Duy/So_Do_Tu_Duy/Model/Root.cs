@@ -11,7 +11,7 @@ namespace So_Do_Tu_Duy
     {
         public List<DrawObject> lstObj = new List<DrawObject>();
 
-        public Root(string name, Point point, int witdh, int height) : base(name, point, witdh, height)
+        public Root(int idObj, string name, Point point, int witdh, int height) : base(idObj, name, point, witdh, height)
         {
         }
 

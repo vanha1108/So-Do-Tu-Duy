@@ -21,7 +21,7 @@ namespace So_Do_Tu_Duy.Model
         }
     
         public int IDPro { get; set; }
-        public string note { get; set; }
+        public string Note { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shape> Shapes { get; set; }

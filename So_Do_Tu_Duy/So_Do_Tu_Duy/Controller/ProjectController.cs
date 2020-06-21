@@ -36,7 +36,7 @@ namespace So_Do_Tu_Duy.Controller
             using ( var _context = new DBMindMapEntities() )
             {
                 var nt = (from t in _context.ProjectShapes
-                          select t.note).ToList();
+                          select t.Note).ToList();
                 return nt[0];
             }    
         }

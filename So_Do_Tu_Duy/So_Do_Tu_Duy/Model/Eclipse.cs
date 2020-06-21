@@ -11,7 +11,7 @@ namespace So_Do_Tu_Duy
 {
     public class Eclipse : DrawObject
     {
-        public Eclipse(string name, Point point, int witdh, int height):base(name, point, witdh, height)
+        public Eclipse(int idObj, string name, Point point, int witdh, int height):base(idObj, name, point, witdh, height)
         { }
 
         public override void Draw(Graphics myGp, Pen myPen )

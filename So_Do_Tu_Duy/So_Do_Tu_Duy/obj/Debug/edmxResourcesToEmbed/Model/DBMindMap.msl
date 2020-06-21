@@ -4,7 +4,7 @@
     <EntitySetMapping Name="ProjectShapes">
       <EntityTypeMapping TypeName="MindMapModel.ProjectShape">
         <MappingFragment StoreEntitySet="ProjectShape">
-          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
           <ScalarProperty Name="IDPro" ColumnName="IDPro" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -12,11 +12,11 @@
     <EntitySetMapping Name="Shapes">
       <EntityTypeMapping TypeName="MindMapModel.Shape">
         <MappingFragment StoreEntitySet="Shape">
-          <ScalarProperty Name="LocationY" ColumnName="LocationY" />
           <ScalarProperty Name="IDPro" ColumnName="IDPro" />
-          <ScalarProperty Name="Descripton" ColumnName="Descripton" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Height" ColumnName="Height" />
           <ScalarProperty Name="Witdh" ColumnName="Witdh" />
+          <ScalarProperty Name="LocationY" ColumnName="LocationY" />
           <ScalarProperty Name="LocationX" ColumnName="LocationX" />
           <ScalarProperty Name="NameShape" ColumnName="NameShape" />
           <ScalarProperty Name="ID" ColumnName="ID" />

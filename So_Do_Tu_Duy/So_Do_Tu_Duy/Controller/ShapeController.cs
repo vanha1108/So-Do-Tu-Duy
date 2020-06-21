@@ -10,34 +10,52 @@ namespace So_Do_Tu_Duy.Controller
 {
     public class ShapeController
     {
- 
-        public static bool AddShape(Root root)
+        //public static bool AddShape(Root root)
+        //{
+        //    using ( var _context = new DBMindMapEntities() )
+        //    {
+        //        try
+        //        {
+        //            Shape sp = new Shape();
+        //            foreach (var shape in root.lstObj)
+        //            {
+        //                sp.ID = shape.IdObj;
+        //                sp.LocationX = shape.Point.X;
+        //                sp.LocationY = shape.Point.Y;
+        //                sp.Witdh = shape.Witdh;
+        //                sp.Height = shape.Height;
+        //                sp.Description = "test";
+        //                sp.NameShape = shape.Name;
+        //                sp.IDPro = frmMain.idPro;
+        //                _context.Shapes.Add(sp);                             
+        //            }
+        //            _context.SaveChanges();
+        //            return true;
+        //        }
+        //        catch (Exception e) 
+        //        {
+        //            MessageBox.Show(e.Message);
+        //            return false; 
+        //        }         
+        //    }    
+        //}
+
+        public static bool AddShape(Shape sp)
         {
-            using ( var _context = new DBMindMapEntities() )
+            using (var _context = new DBMindMapEntities())
             {
                 try
                 {
-                    Shape sp = new Shape();
-                    foreach (var shape in root.lstObj)
-                    {
-                        sp.LocationX = shape.Point.X;
-                        sp.LocationY = shape.Point.Y;
-                        sp.Witdh = shape.Witdh;
-                        sp.Height = shape.Height;
-                        sp.Descripton = "test";
-                        sp.NameShape = shape.Name;
-                        sp.IDPro = 24;
-                        _context.Shapes.Add(sp);
-                        _context.SaveChanges();                 
-                    }
+                    _context.Shapes.Add(sp);
+                    _context.SaveChanges();
                     return true;
                 }
-                catch (Exception e) 
+                catch (Exception e)
                 {
                     MessageBox.Show(e.Message);
-                    return false; 
-                }         
-            }    
+                    return false;
+                }
+            }
         }
     }
 }

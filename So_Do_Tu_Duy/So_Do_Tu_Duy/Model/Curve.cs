@@ -12,7 +12,7 @@ namespace So_Do_Tu_Duy
     class Curve : DrawObject
     {
         public Point p2 = new Point(0, 0);
-        public Curve(string name, Point point, int witdh, int height):base(name, point,witdh,height)
+        public Curve(int idObj, string name, Point point, int witdh, int height):base(idObj, name, point,witdh,height)
         {
         }
 

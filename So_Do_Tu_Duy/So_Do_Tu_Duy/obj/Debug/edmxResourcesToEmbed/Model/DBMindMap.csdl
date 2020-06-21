@@ -4,7 +4,7 @@
     <EntitySet Name="ProjectShapes" EntityType="MindMapModel.ProjectShape" />
     <EntitySet Name="Shapes" EntityType="MindMapModel.Shape" />
     <EntitySet Name="sysdiagrams" EntityType="MindMapModel.sysdiagram" />
-    <AssociationSet Name="FK__Shape__IDPro__35BCFE0A" Association="MindMapModel.FK__Shape__IDPro__35BCFE0A">
+    <AssociationSet Name="FK_Shape_ProjectShape" Association="MindMapModel.FK_Shape_ProjectShape">
       <End Role="ProjectShape" EntitySet="ProjectShapes" />
       <End Role="Shape" EntitySet="Shapes" />
     </AssociationSet>
@@ -13,23 +13,23 @@
     <Key>
       <PropertyRef Name="IDPro" />
     </Key>
-    <Property Name="IDPro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Shapes" Relationship="MindMapModel.FK__Shape__IDPro__35BCFE0A" FromRole="ProjectShape" ToRole="Shape" />
+    <Property Name="IDPro" Type="Int32" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Shapes" Relationship="MindMapModel.FK_Shape_ProjectShape" FromRole="ProjectShape" ToRole="Shape" />
   </EntityType>
   <EntityType Name="Shape">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NameShape" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="LocationX" Type="Double" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="NameShape" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LocationX" Type="Double" />
+    <Property Name="LocationY" Type="Double" />
     <Property Name="Witdh" Type="Double" />
     <Property Name="Height" Type="Double" />
-    <Property Name="Descripton" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="IDPro" Type="Int32" Nullable="false" />
-    <Property Name="LocationY" Type="Double" />
-    <NavigationProperty Name="ProjectShape" Relationship="MindMapModel.FK__Shape__IDPro__35BCFE0A" FromRole="Shape" ToRole="ProjectShape" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IDPro" Type="Int32" />
+    <NavigationProperty Name="ProjectShape" Relationship="MindMapModel.FK_Shape_ProjectShape" FromRole="Shape" ToRole="ProjectShape" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -41,8 +41,8 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <Association Name="FK__Shape__IDPro__35BCFE0A">
-    <End Type="MindMapModel.ProjectShape" Role="ProjectShape" Multiplicity="1" />
+  <Association Name="FK_Shape_ProjectShape">
+    <End Type="MindMapModel.ProjectShape" Role="ProjectShape" Multiplicity="0..1" />
     <End Type="MindMapModel.Shape" Role="Shape" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ProjectShape">

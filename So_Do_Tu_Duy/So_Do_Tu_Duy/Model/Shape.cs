@@ -16,12 +16,12 @@ namespace So_Do_Tu_Duy.Model
     {
         public int ID { get; set; }
         public string NameShape { get; set; }
-        public double LocationX { get; set; }
+        public Nullable<double> LocationX { get; set; }
+        public Nullable<double> LocationY { get; set; }
         public Nullable<double> Witdh { get; set; }
         public Nullable<double> Height { get; set; }
-        public string Descripton { get; set; }
-        public int IDPro { get; set; }
-        public Nullable<double> LocationY { get; set; }
+        public string Description { get; set; }
+        public Nullable<int> IDPro { get; set; }
     
         public virtual ProjectShape ProjectShape { get; set; }
     }

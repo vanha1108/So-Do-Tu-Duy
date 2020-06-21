@@ -35,8 +35,6 @@
             this.btnTopic = new System.Windows.Forms.Button();
             this.btnSubTopic = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mindMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outlinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ptbDraw = new System.Windows.Forms.PictureBox();
             this.btnCloseMap = new System.Windows.Forms.Button();
@@ -123,28 +121,12 @@
             this.menuStrip1.BackColor = System.Drawing.Color.LightGray;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
-            this.mindMapToolStripMenuItem,
             this.outlinerToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1182, 40);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 36);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // mindMapToolStripMenuItem
-            // 
-            this.mindMapToolStripMenuItem.Name = "mindMapToolStripMenuItem";
-            this.mindMapToolStripMenuItem.Size = new System.Drawing.Size(91, 36);
-            this.mindMapToolStripMenuItem.Text = "Mind Map";
-            this.mindMapToolStripMenuItem.Click += new System.EventHandler(this.mindMapToolStripMenuItem_Click);
             // 
             // outlinerToolStripMenuItem
             // 
@@ -161,7 +143,6 @@
             this.ptbDraw.Size = new System.Drawing.Size(1182, 673);
             this.ptbDraw.TabIndex = 2;
             this.ptbDraw.TabStop = false;
-            this.ptbDraw.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseClick);
             this.ptbDraw.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseDoubleClick);
             this.ptbDraw.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseDown);
             this.ptbDraw.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ptbDraw_MouseUp);
@@ -193,7 +174,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMap";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMap_FormClosing);
-            this.Load += new System.EventHandler(this.frmMap_Load);
             this.panel1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -206,14 +186,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.PictureBox ptbDraw;
         private System.Windows.Forms.Button btnCloseMap;
         private System.Windows.Forms.Button btnRelationship;
         private System.Windows.Forms.Button btnSubTopic;
         private System.Windows.Forms.Button btnTopic;
         private System.Windows.Forms.Button btnExport;
-        private System.Windows.Forms.ToolStripMenuItem mindMapToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outlinerToolStripMenuItem;
     }
 }

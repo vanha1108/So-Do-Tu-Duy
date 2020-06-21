@@ -4,21 +4,21 @@
     <Key>
       <PropertyRef Name="IDPro" />
     </Key>
-    <Property Name="IDPro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="note" Type="nvarchar" MaxLength="255" />
+    <Property Name="IDPro" Type="int" Nullable="false" />
+    <Property Name="Note" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="Shape">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NameShape" Type="varchar" MaxLength="255" />
-    <Property Name="LocationX" Type="float" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="NameShape" Type="nvarchar" MaxLength="255" />
+    <Property Name="LocationX" Type="float" />
+    <Property Name="LocationY" Type="float" />
     <Property Name="Witdh" Type="float" />
     <Property Name="Height" Type="float" />
-    <Property Name="Descripton" Type="varchar" MaxLength="255" />
-    <Property Name="IDPro" Type="int" Nullable="false" />
-    <Property Name="LocationY" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="IDPro" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -30,8 +30,8 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK__Shape__IDPro__35BCFE0A">
-    <End Role="ProjectShape" Type="Self.ProjectShape" Multiplicity="1" />
+  <Association Name="FK_Shape_ProjectShape">
+    <End Role="ProjectShape" Type="Self.ProjectShape" Multiplicity="0..1" />
     <End Role="Shape" Type="Self.Shape" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ProjectShape">
@@ -46,7 +46,7 @@
     <EntitySet Name="ProjectShape" EntityType="Self.ProjectShape" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Shape" EntityType="Self.Shape" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Shape__IDPro__35BCFE0A" Association="Self.FK__Shape__IDPro__35BCFE0A">
+    <AssociationSet Name="FK_Shape_ProjectShape" Association="Self.FK_Shape_ProjectShape">
       <End Role="ProjectShape" EntitySet="ProjectShape" />
       <End Role="Shape" EntitySet="Shape" />
     </AssociationSet>

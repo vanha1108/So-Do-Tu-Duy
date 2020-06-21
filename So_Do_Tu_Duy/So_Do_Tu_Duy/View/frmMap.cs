@@ -14,9 +14,10 @@ using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
 namespace So_Do_Tu_Duy
-{
+{ 
     public partial class frmMap : Form
     {
+        public static int idObj = 0;
         Point point;
         int typeObj = -1;
         bool isDraw = true;
@@ -43,15 +44,11 @@ namespace So_Do_Tu_Duy
             myPen.DashStyle = DashStyle.Solid;
             myPen.Width = 2;
 
-            root = new Root("Root",new Point(ptbDraw.Width/2 - DefineSize.Width_Main/2, ptbDraw.Height/2 - DefineSize.Height_Main/2),DefineSize.Width_Main,DefineSize.Height_Main);
+            root = new Root(0,"Root",new Point(ptbDraw.Width/2 - DefineSize.Width_Main/2, ptbDraw.Height/2 - DefineSize.Height_Main/2),DefineSize.Width_Main,DefineSize.Height_Main);
             
             g1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
 
         }  
-
-        private void frmMap_Load(object sender, EventArgs e)
-        {
-        }
 
         private void btnTopic_Click(object sender, EventArgs e)
         {
@@ -123,11 +120,6 @@ namespace So_Do_Tu_Duy
             typeObj = 2;
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void btnRelationship_Click(object sender, EventArgs e)
         {
             isDraw = true;
@@ -140,13 +132,7 @@ namespace So_Do_Tu_Duy
         {
             frmOutliner frm = new frmOutliner();
             frm.Show();
-        }
-
-        private void mindMapToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-        }
-      
+        } 
 
         public void DrawObj( Root root)
         {
@@ -161,7 +147,7 @@ namespace So_Do_Tu_Duy
             {
                 if(shape.Name=="Root")
                 {
-                    DrawObj((Root)shape);              
+                    DrawObj((Root)shape);
                 }
                 else
                 {
@@ -175,12 +161,7 @@ namespace So_Do_Tu_Duy
             btnTopic.BackColor = Color.WhiteSmoke;
             btnSubTopic.BackColor = Color.WhiteSmoke;
             btnRelationship.BackColor = Color.WhiteSmoke;
-        }
-
-        private void ptbDraw_MouseClick(object sender, MouseEventArgs e)
-        {
-            
-        }
+        }    
 
         private void btnCloseMap_Click(object sender, EventArgs e)
         {
@@ -197,20 +178,21 @@ namespace So_Do_Tu_Duy
             {
                 if (typeObj == 1)
                 {
-                    Rec rec = new Rec("Rectangle", e.Location, DefineSize.Width, DefineSize.Height);
+                    Rec rec = new Rec(idObj,"Rectangle", e.Location, DefineSize.Width, DefineSize.Height);
                     root.lstObj.Add(rec);
-                    isDraw = false;               
+                    isDraw = false;
+                    idObj++;
                 }
                 else if (typeObj == 3)
                 {
                     point = e.Location;
                 } else if ( typeObj == 2 )
                 {
-                    Circle cir = new Circle("Circle", e.Location,DefineSize.radius*2, DefineSize.radius*2);
+                    Circle cir = new Circle(idObj,"Circle", e.Location,DefineSize.radius*2, DefineSize.radius*2);
                     root.lstObj.Add(cir);
                     isDraw = false;
-                }    
-
+                    idObj++;
+                }                
                 DrawObj(root);
                 g2.DrawImage(bm, 0, 0);
                 ResetColor();
@@ -223,12 +205,14 @@ namespace So_Do_Tu_Duy
             {
                  if (typeObj == 3)
                  {
-                    Curve cur = new Curve("Curve", point, Math.Abs(e.Location.X - point.X), Math.Abs(e.Location.Y - point.Y));
+                    Curve cur = new Curve(idObj,"Curve", point, Math.Abs(e.Location.X - point.X), Math.Abs(e.Location.Y - point.Y));
                     cur.p2 = e.Location;
                     root.lstObj.Add(cur);
                     isDraw = false;
-                 }
-
+                    idObj++;
+                }
+                
+                
                 DrawObj(root);
                 g2.DrawImage(bm, 0, 0);
                 ResetColor();
@@ -238,10 +222,24 @@ namespace So_Do_Tu_Duy
         private void btnExport_Click(object sender, EventArgs e)
         {
             ProjectShape pro = new ProjectShape();
-            pro.note = frmOutliner.note;
+            pro.IDPro = frmMain.idPro;
+            pro.Note = frmOutliner.note;
             ProjectController.AddProject(pro);
 
-            ShapeController.AddShape(root);
+            Shape sp = new Shape();
+            foreach (var shape in root.lstObj)
+            {
+                sp.ID = shape.IdObj;
+                sp.LocationX = shape.Point.X;
+                sp.LocationY = shape.Point.Y;
+                sp.Witdh = shape.Witdh;
+                sp.Height = shape.Height;
+                sp.Description = "";
+                sp.NameShape = shape.Name;
+                sp.IDPro = frmMain.idPro;
+                ShapeController.AddShape(sp);
+            }
+               
         }
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)

@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="MindMapModel.ProjectShape" Width="1.5" PointX="0.75" PointY="1.5" />
         <EntityTypeShape EntityType="MindMapModel.Shape" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="MindMapModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" />
-        <AssociationConnector Association="MindMapModel.FK__Shape__IDPro__35BCFE0A" />
+        <AssociationConnector Association="MindMapModel.FK_Shape_ProjectShape" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
