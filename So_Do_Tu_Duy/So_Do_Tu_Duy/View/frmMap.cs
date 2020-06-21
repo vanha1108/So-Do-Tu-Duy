@@ -240,6 +240,8 @@ namespace So_Do_Tu_Duy
             ProjectShape pro = new ProjectShape();
             pro.note = frmOutliner.note;
             ProjectController.AddProject(pro);
+
+            ShapeController.AddShape(root);
         }
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)

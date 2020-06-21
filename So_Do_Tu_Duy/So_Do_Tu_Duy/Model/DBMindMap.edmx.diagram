@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4040f553813442f08c403396c6ee3323" Name="Diagram1">
-        <EntityTypeShape EntityType="MindMapModel.ProjectShape" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="MindMapModel.ProjectShape" Width="1.5" PointX="0.75" PointY="1.5" />
         <EntityTypeShape EntityType="MindMapModel.Shape" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="MindMapModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="MindMapModel.FK__Shape__IDPro__35BCFE0A" />

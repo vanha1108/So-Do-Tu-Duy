@@ -12,12 +12,13 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NameShape" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="NameShape" Type="varchar" MaxLength="255" />
     <Property Name="LocationX" Type="float" Nullable="false" />
     <Property Name="Witdh" Type="float" />
     <Property Name="Height" Type="float" />
-    <Property Name="Descripton" Type="nvarchar" MaxLength="1" Nullable="false" />
+    <Property Name="Descripton" Type="varchar" MaxLength="255" />
     <Property Name="IDPro" Type="int" Nullable="false" />
+    <Property Name="LocationY" Type="float" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

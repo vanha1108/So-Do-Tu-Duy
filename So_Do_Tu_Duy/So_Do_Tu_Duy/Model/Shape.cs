@@ -21,6 +21,7 @@ namespace So_Do_Tu_Duy.Model
         public Nullable<double> Height { get; set; }
         public string Descripton { get; set; }
         public int IDPro { get; set; }
+        public Nullable<double> LocationY { get; set; }
     
         public virtual ProjectShape ProjectShape { get; set; }
     }

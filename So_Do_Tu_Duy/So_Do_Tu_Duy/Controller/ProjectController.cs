@@ -18,7 +18,7 @@ namespace So_Do_Tu_Duy.Controller
             {
                 try
                 {
-                    MessageBox.Show("Successful!!");
+                    //MessageBox.Show("Successful!!");
                     _context.ProjectShapes.AddOrUpdate(project);
                     _context.SaveChanges();
                     return true;

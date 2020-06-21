@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,8 @@ namespace So_Do_Tu_Duy
 {
     public partial class frmMain : Form
     {
+        public static int idPro = 0;
+
         public frmMain()
         {
             InitializeComponent();
@@ -28,6 +31,7 @@ namespace So_Do_Tu_Duy
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            idPro++;
             this.Hide();
             frmMap formMap = new frmMap();
             formMap.ShowDialog();

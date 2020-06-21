@@ -12,6 +12,7 @@
     <EntitySetMapping Name="Shapes">
       <EntityTypeMapping TypeName="MindMapModel.Shape">
         <MappingFragment StoreEntitySet="Shape">
+          <ScalarProperty Name="LocationY" ColumnName="LocationY" />
           <ScalarProperty Name="IDPro" ColumnName="IDPro" />
           <ScalarProperty Name="Descripton" ColumnName="Descripton" />
           <ScalarProperty Name="Height" ColumnName="Height" />

@@ -36,5 +36,4 @@ C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\EntityFrame
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\EntityFramework.xml
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csprojAssemblyReference.cache
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csproj.CopyComplete
