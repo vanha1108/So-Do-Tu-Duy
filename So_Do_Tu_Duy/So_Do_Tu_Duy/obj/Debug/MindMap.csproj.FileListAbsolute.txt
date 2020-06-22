@@ -5,6 +5,8 @@ C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\EntityFrame
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\EntityFramework.xml
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csprojAssemblyReference.cache
+C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.View.frmListProject.resources
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.frmMain.resources
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.frmMap.resources
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.frmOutliner.resources
@@ -15,4 +17,3 @@ C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csp
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csproj.CopyComplete
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.exe
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.pdb
-C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csprojAssemblyReference.cache

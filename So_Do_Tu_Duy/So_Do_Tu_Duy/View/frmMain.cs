@@ -1,4 +1,6 @@
-﻿using System;
+﻿using So_Do_Tu_Duy.Controller;
+using So_Do_Tu_Duy.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,6 +43,17 @@ namespace So_Do_Tu_Duy
         private void button1_Click(object sender, EventArgs e)
         {
             btnCreate.Enabled = true;
+        }
+
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            frmListProject fListPr = new frmListProject();
+            fListPr.Show();
+            BindingSource source = new BindingSource();
+            source.DataSource = ProjectController.getListProject();
+            fListPr.dtgvListProject.DataSource = source;
+ 
+            fListPr.dtgvListProject.Columns["Shapes"].Visible = false;
         }
     }
 }

@@ -90,6 +90,12 @@
     <Compile Include="Model\Text.cs">
       <DependentUpon>DBMindMap.tt</DependentUpon>
     </Compile>
+    <Compile Include="View\frmListProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmListProject.Designer.cs">
+      <DependentUpon>frmListProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     <Compile Include="View\UCOutliner.Designer.cs">
       <DependentUpon>UCOutliner.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\frmListProject.resx">
+      <DependentUpon>frmListProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
