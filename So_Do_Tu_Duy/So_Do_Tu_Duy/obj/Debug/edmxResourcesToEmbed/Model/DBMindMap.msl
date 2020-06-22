@@ -34,5 +34,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Texts">
+      <EntityTypeMapping TypeName="MindMapModel.Text">
+        <MappingFragment StoreEntitySet="Text">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Witdh" ColumnName="Witdh" />
+          <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+          <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

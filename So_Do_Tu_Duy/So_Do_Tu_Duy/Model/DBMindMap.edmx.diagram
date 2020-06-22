@@ -5,10 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4040f553813442f08c403396c6ee3323" Name="Diagram1">
-        <EntityTypeShape EntityType="MindMapModel.ProjectShape" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="MindMapModel.ProjectShape" Width="1.5" PointX="0.75" PointY="1.625" />
         <EntityTypeShape EntityType="MindMapModel.Shape" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="MindMapModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MindMapModel.Text" Width="1.5" PointX="5.25" PointY="1.25" />
         <AssociationConnector Association="MindMapModel.FK_Shape_ProjectShape" />
+        <AssociationConnector Association="MindMapModel.FK_Text_Shape" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

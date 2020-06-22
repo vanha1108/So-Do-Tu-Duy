@@ -18,6 +18,8 @@ namespace So_Do_Tu_Duy
     public partial class frmMap : Form
     {
         public static int idObj = 0;
+        public static List<Text> lstText = new List<Text>();
+
         Point point;
         int typeObj = -1;
         bool isDraw = true;
@@ -98,7 +100,19 @@ namespace So_Do_Tu_Duy
                         rt.Location = new Point(shape.Point.X + 1, shape.Point.Y + 1);
                         rt.Size = new Size(shape.Witdh - 2, shape.Height - 2);
                         rt.Text = "Ghi nội dung của Topic";
+                        rt.Tag = shape.IdObj;
+
+                        Text tx = new Text();
+                        tx.ID = shape.IdObj;
+                        tx.LocationX = rt.Location.X;
+                        tx.LocationY = rt.Location.Y;
+                        tx.Witdh = rt.Size.Width;
+                        tx.Height = rt.Size.Height;
+                        tx.Description = rt.Text;
+                        rt.TextChanged += Rt_TextChanged;
                         ptbDraw.Controls.Add(rt);
+                        lstText.Add(tx);
+                        //TextController.AddText(tx);
                     } else if ( shape.Name == "Circle")
                     {
                         RichTextBox rt = new RichTextBox();
@@ -106,11 +120,28 @@ namespace So_Do_Tu_Duy
                         rt.Location = new Point(shape.Point.X + 20, shape.Point.Y + 20);
                         rt.Size = new Size(shape.Witdh - 40, shape.Height - 45);
                         rt.Text = "Ghi nội dung của Sub Topic";
+                        rt.Tag = shape.IdObj;
+
+                        Text tx = new Text();
+                        tx.ID = shape.IdObj;
+                        tx.LocationX = rt.Location.X;
+                        tx.LocationY = rt.Location.Y;
+                        tx.Witdh = rt.Size.Width;
+                        tx.Height = rt.Size.Height;
+                        tx.Description = rt.Text;
+                        rt.TextChanged += Rt_TextChanged;
                         ptbDraw.Controls.Add(rt);
+                        lstText.Add(tx);
+                        //TextController.AddText(tx);
                     }    
                     
                 }              
              }    
+        }
+
+        private void Rt_TextChanged(object sender, EventArgs e)
+        {
+           
         }
 
         private void btnSubTopic_Click(object sender, EventArgs e)
@@ -166,10 +197,8 @@ namespace So_Do_Tu_Duy
         private void btnCloseMap_Click(object sender, EventArgs e)
         {
             frmMain formMain = new frmMain();
-            formMain.Close();
+            frmMap fMap = new frmMap();
             this.Close();
-            Application.Exit();
-
         }
 
         private void ptbDraw_MouseDown(object sender, MouseEventArgs e)
@@ -210,15 +239,13 @@ namespace So_Do_Tu_Duy
                     root.lstObj.Add(cur);
                     isDraw = false;
                     idObj++;
-                }
-                
+                }            
                 
                 DrawObj(root);
                 g2.DrawImage(bm, 0, 0);
                 ResetColor();
             }
         }
-
         private void btnExport_Click(object sender, EventArgs e)
         {
             ProjectShape pro = new ProjectShape();
@@ -239,7 +266,17 @@ namespace So_Do_Tu_Duy
                 sp.IDPro = frmMain.idPro;
                 ShapeController.AddShape(sp);
             }
+
+            foreach ( var temp in lstText )
+            {
+                TextController.AddText(temp);
+            }    
                
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(ptbDraw.Controls.Count + "");
         }
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)

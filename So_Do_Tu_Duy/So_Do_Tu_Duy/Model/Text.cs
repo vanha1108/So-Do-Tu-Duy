@@ -12,18 +12,15 @@ namespace So_Do_Tu_Duy.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Shape
+    public partial class Text
     {
         public int ID { get; set; }
-        public string NameShape { get; set; }
         public Nullable<double> LocationX { get; set; }
         public Nullable<double> LocationY { get; set; }
         public Nullable<double> Witdh { get; set; }
         public Nullable<double> Height { get; set; }
         public string Description { get; set; }
-        public Nullable<int> IDPro { get; set; }
     
-        public virtual ProjectShape ProjectShape { get; set; }
-        public virtual Text Text { get; set; }
+        public virtual Shape Shape { get; set; }
     }
 }

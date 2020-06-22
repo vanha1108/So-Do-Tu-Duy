@@ -32,9 +32,15 @@ namespace So_Do_Tu_Duy
         private void btnCreate_Click(object sender, EventArgs e)
         {
             idPro++;
-            this.Hide();
+            frmMain fMain = new frmMain();
+            fMain.Close();
             frmMap formMap = new frmMap();
             formMap.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            btnCreate.Enabled = true;
         }
     }
 }

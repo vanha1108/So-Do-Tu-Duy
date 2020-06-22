@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="Controller\ProjectController.cs" />
     <Compile Include="Controller\ShapeController.cs" />
+    <Compile Include="Controller\TextController.cs" />
     <Compile Include="Model\DBMindMap.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -84,6 +85,9 @@
       <DependentUpon>DBMindMap.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagram.cs">
+      <DependentUpon>DBMindMap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Text.cs">
       <DependentUpon>DBMindMap.tt</DependentUpon>
     </Compile>
     <Compile Include="View\frmMain.cs">

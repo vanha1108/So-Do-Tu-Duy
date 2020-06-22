@@ -4,9 +4,14 @@
     <EntitySet Name="ProjectShapes" EntityType="MindMapModel.ProjectShape" />
     <EntitySet Name="Shapes" EntityType="MindMapModel.Shape" />
     <EntitySet Name="sysdiagrams" EntityType="MindMapModel.sysdiagram" />
+    <EntitySet Name="Texts" EntityType="MindMapModel.Text" />
     <AssociationSet Name="FK_Shape_ProjectShape" Association="MindMapModel.FK_Shape_ProjectShape">
       <End Role="ProjectShape" EntitySet="ProjectShapes" />
       <End Role="Shape" EntitySet="Shapes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Text_Shape" Association="MindMapModel.FK_Text_Shape">
+      <End Role="Shape" EntitySet="Shapes" />
+      <End Role="Text" EntitySet="Texts" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ProjectShape">
@@ -30,6 +35,7 @@
     <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="IDPro" Type="Int32" />
     <NavigationProperty Name="ProjectShape" Relationship="MindMapModel.FK_Shape_ProjectShape" FromRole="Shape" ToRole="ProjectShape" />
+    <NavigationProperty Name="Text" Relationship="MindMapModel.FK_Text_Shape" FromRole="Shape" ToRole="Text" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -41,6 +47,18 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <EntityType Name="Text">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="LocationX" Type="Double" />
+    <Property Name="LocationY" Type="Double" />
+    <Property Name="Witdh" Type="Double" />
+    <Property Name="Height" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Shape" Relationship="MindMapModel.FK_Text_Shape" FromRole="Text" ToRole="Shape" />
+  </EntityType>
   <Association Name="FK_Shape_ProjectShape">
     <End Type="MindMapModel.ProjectShape" Role="ProjectShape" Multiplicity="0..1" />
     <End Type="MindMapModel.Shape" Role="Shape" Multiplicity="*" />
@@ -50,6 +68,18 @@
       </Principal>
       <Dependent Role="Shape">
         <PropertyRef Name="IDPro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Text_Shape">
+    <End Type="MindMapModel.Shape" Role="Shape" Multiplicity="1" />
+    <End Type="MindMapModel.Text" Role="Text" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Shape">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Text">
+        <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
