@@ -12,7 +12,7 @@ namespace So_Do_Tu_Duy.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Text
+    public partial class Infor
     {
         public int ID { get; set; }
         public Nullable<double> LocationX { get; set; }

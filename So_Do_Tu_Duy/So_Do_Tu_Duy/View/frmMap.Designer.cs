@@ -38,6 +38,7 @@
             this.outlinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ptbDraw = new System.Windows.Forms.PictureBox();
             this.btnCloseMap = new System.Windows.Forms.Button();
+            this.btnMainTopic = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbDraw)).BeginInit();
@@ -46,6 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
+            this.panel1.Controls.Add(this.btnMainTopic);
             this.panel1.Controls.Add(this.btnExport);
             this.panel1.Controls.Add(this.btnRelationship);
             this.panel1.Controls.Add(this.btnTopic);
@@ -159,6 +161,16 @@
             this.btnCloseMap.UseVisualStyleBackColor = true;
             this.btnCloseMap.Click += new System.EventHandler(this.btnCloseMap_Click);
             // 
+            // btnMainTopic
+            // 
+            this.btnMainTopic.Location = new System.Drawing.Point(596, 24);
+            this.btnMainTopic.Name = "btnMainTopic";
+            this.btnMainTopic.Size = new System.Drawing.Size(155, 49);
+            this.btnMainTopic.TabIndex = 2;
+            this.btnMainTopic.Text = "Main Topic";
+            this.btnMainTopic.UseVisualStyleBackColor = true;
+            this.btnMainTopic.Click += new System.EventHandler(this.btnMainTopic_Click);
+            // 
             // frmMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -186,12 +198,13 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.PictureBox ptbDraw;
         private System.Windows.Forms.Button btnCloseMap;
         private System.Windows.Forms.Button btnRelationship;
         private System.Windows.Forms.Button btnSubTopic;
         private System.Windows.Forms.Button btnTopic;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ToolStripMenuItem outlinerToolStripMenuItem;
+        public System.Windows.Forms.PictureBox ptbDraw;
+        private System.Windows.Forms.Button btnMainTopic;
     }
 }

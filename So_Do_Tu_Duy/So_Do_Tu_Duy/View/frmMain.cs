@@ -1,4 +1,5 @@
 ﻿using So_Do_Tu_Duy.Controller;
+using So_Do_Tu_Duy.Model;
 using So_Do_Tu_Duy.View;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,16 @@ namespace So_Do_Tu_Duy
 {
     public partial class frmMain : Form
     {
+        public static int idObj = 1;
+        public static List<Infor> lstText = new List<Infor>();
+
         public static int idPro = 0;
 
         public frmMain()
         {
             InitializeComponent();
+            idPro = ProjectController.getListProject().Count() + 1;
+            idObj = ShapeController.getListShape().Count() + 1;
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -37,7 +43,7 @@ namespace So_Do_Tu_Duy
             frmMain fMain = new frmMain();
             fMain.Close();
             frmMap formMap = new frmMap();
-            formMap.ShowDialog();
+            formMap.ShowDialog();         
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,11 +55,13 @@ namespace So_Do_Tu_Duy
         {
             frmListProject fListPr = new frmListProject();
             fListPr.Show();
-            BindingSource source = new BindingSource();
-            source.DataSource = ProjectController.getListProject();
-            fListPr.dtgvListProject.DataSource = source;
- 
-            fListPr.dtgvListProject.Columns["Shapes"].Visible = false;
+            if ( ProjectController.getListProject().Count() != 0)
+            {       
+                BindingSource source = new BindingSource();
+                source.DataSource = ProjectController.getListProject();
+                fListPr.dtgvListProject.DataSource = source;
+                fListPr.dtgvListProject.Columns["Shapes"].Visible = false;
+            }             
         }
     }
 }

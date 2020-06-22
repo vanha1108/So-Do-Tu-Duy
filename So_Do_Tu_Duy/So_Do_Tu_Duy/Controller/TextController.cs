@@ -1,8 +1,10 @@
 ﻿using So_Do_Tu_Duy.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,13 +13,13 @@ namespace So_Do_Tu_Duy.Controller
 {
     public class TextController
     {
-        public static bool AddText(Text tx)
+        public static bool AddText(Infor tx)
         {
             using ( var _context = new DBMindMapEntities() )
             {
                 try
                 {
-                    _context.Texts.Add(tx);
+                    _context.Infors.AddOrUpdate(tx);
                     _context.SaveChanges();
                     return true;
                 }
@@ -41,6 +43,18 @@ namespace So_Do_Tu_Duy.Controller
 
             }    
         }
+
+        public static Infor getInfor(int id)
+        {
+            using ( var _context = new DBMindMapEntities() )
+            {
+                var x = (from i in _context.Infors
+                         where i.ID == id
+                         select i).SingleOrDefault();
+                return x;
+            }           
+        }
+
 
     }
 }

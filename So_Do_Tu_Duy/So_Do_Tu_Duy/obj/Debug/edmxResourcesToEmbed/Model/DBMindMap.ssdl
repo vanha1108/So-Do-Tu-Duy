@@ -1,5 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MindMapModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Infor">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="LocationX" Type="float" />
+    <Property Name="LocationY" Type="float" />
+    <Property Name="Witdh" Type="float" />
+    <Property Name="Height" Type="float" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+  </EntityType>
   <EntityType Name="ProjectShape">
     <Key>
       <PropertyRef Name="IDPro" />
@@ -17,7 +28,6 @@
     <Property Name="LocationY" Type="float" />
     <Property Name="Witdh" Type="float" />
     <Property Name="Height" Type="float" />
-    <Property Name="Description" Type="nvarchar" MaxLength="255" />
     <Property Name="IDPro" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -29,17 +39,6 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
-  <EntityType Name="Text">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="LocationX" Type="float" />
-    <Property Name="LocationY" Type="float" />
-    <Property Name="Witdh" Type="float" />
-    <Property Name="Height" Type="float" />
-    <Property Name="Description" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <Association Name="FK_Shape_ProjectShape">
     <End Role="ProjectShape" Type="Self.ProjectShape" Multiplicity="0..1" />
@@ -55,28 +54,28 @@
   </Association>
   <Association Name="FK_Text_Shape">
     <End Role="Shape" Type="Self.Shape" Multiplicity="1" />
-    <End Role="Text" Type="Self.Text" Multiplicity="0..1" />
+    <End Role="Infor" Type="Self.Infor" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Shape">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="Text">
+      <Dependent Role="Infor">
         <PropertyRef Name="ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="MindMapModelStoreContainer">
+    <EntitySet Name="Infor" EntityType="Self.Infor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProjectShape" EntityType="Self.ProjectShape" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Shape" EntityType="Self.Shape" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Text" EntityType="Self.Text" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Shape_ProjectShape" Association="Self.FK_Shape_ProjectShape">
       <End Role="ProjectShape" EntitySet="ProjectShape" />
       <End Role="Shape" EntitySet="Shape" />
     </AssociationSet>
     <AssociationSet Name="FK_Text_Shape" Association="Self.FK_Text_Shape">
       <End Role="Shape" EntitySet="Shape" />
-      <End Role="Text" EntitySet="Text" />
+      <End Role="Infor" EntitySet="Infor" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -28,27 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtgvListProject = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnOpenProject = new System.Windows.Forms.Button();
+            this.dtgvListProject = new System.Windows.Forms.DataGridView();
             this.cIDPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListProject)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dtgvListProject
-            // 
-            this.dtgvListProject.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtgvListProject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvListProject.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cIDPro,
-            this.cNote});
-            this.dtgvListProject.Location = new System.Drawing.Point(42, 76);
-            this.dtgvListProject.Name = "dtgvListProject";
-            this.dtgvListProject.RowHeadersWidth = 51;
-            this.dtgvListProject.RowTemplate.Height = 24;
-            this.dtgvListProject.Size = new System.Drawing.Size(613, 244);
-            this.dtgvListProject.TabIndex = 0;
             // 
             // label1
             // 
@@ -70,6 +56,21 @@
             this.btnOpenProject.UseVisualStyleBackColor = true;
             this.btnOpenProject.Click += new System.EventHandler(this.btnOpenProject_Click);
             // 
+            // dtgvListProject
+            // 
+            this.dtgvListProject.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtgvListProject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgvListProject.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cIDPro,
+            this.cNote});
+            this.dtgvListProject.Location = new System.Drawing.Point(21, 59);
+            this.dtgvListProject.Name = "dtgvListProject";
+            this.dtgvListProject.RowHeadersWidth = 51;
+            this.dtgvListProject.RowTemplate.Height = 24;
+            this.dtgvListProject.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgvListProject.Size = new System.Drawing.Size(634, 254);
+            this.dtgvListProject.TabIndex = 3;
+            // 
             // cIDPro
             // 
             this.cIDPro.HeaderText = "ID Project";
@@ -87,9 +88,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 412);
+            this.Controls.Add(this.dtgvListProject);
             this.Controls.Add(this.btnOpenProject);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtgvListProject);
             this.Name = "frmListProject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List Project";
@@ -102,8 +103,8 @@
         #endregion
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnOpenProject;
-        public System.Windows.Forms.DataGridView dtgvListProject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIDPro;
         private System.Windows.Forms.DataGridViewTextBoxColumn cNote;
+        public System.Windows.Forms.DataGridView dtgvListProject;
     }
 }

@@ -25,9 +25,9 @@ namespace So_Do_Tu_Duy.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Infor> Infors { get; set; }
         public virtual DbSet<ProjectShape> ProjectShapes { get; set; }
         public virtual DbSet<Shape> Shapes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Text> Texts { get; set; }
     }
 }

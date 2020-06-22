@@ -17,17 +17,16 @@ namespace So_Do_Tu_Duy
 { 
     public partial class frmMap : Form
     {
-        public static int idObj = 0;
-        public static List<Text> lstText = new List<Text>();
+        public List<RichTextBox> lstRt = new List<RichTextBox>();
 
         Point point;
-        int typeObj = -1;
-        bool isDraw = true;
+        public static int typeObj = -1;
+        public static bool isDraw = true;
 
-        Bitmap bm;
-        Graphics g1, g2;
-        Pen myPen;
-        SolidBrush solidBrush;
+        public Bitmap bm;
+        public Graphics g1, g2;
+        public Pen myPen;
+        public SolidBrush solidBrush;
 
         Root root;
        
@@ -46,10 +45,8 @@ namespace So_Do_Tu_Duy
             myPen.DashStyle = DashStyle.Solid;
             myPen.Width = 2;
 
-            root = new Root(0,"Root",new Point(ptbDraw.Width/2 - DefineSize.Width_Main/2, ptbDraw.Height/2 - DefineSize.Height_Main/2),DefineSize.Width_Main,DefineSize.Height_Main);
-            
+            root = new Root(frmMain.idObj,"Root",new Point(ptbDraw.Width/2 - DefineSize.Width_Main/2, ptbDraw.Height/2 - DefineSize.Height_Main/2),DefineSize.Width_Main,DefineSize.Height_Main);
             g1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-
         }  
 
         private void btnTopic_Click(object sender, EventArgs e)
@@ -101,18 +98,10 @@ namespace So_Do_Tu_Duy
                         rt.Size = new Size(shape.Witdh - 2, shape.Height - 2);
                         rt.Text = "Ghi nội dung của Topic";
                         rt.Tag = shape.IdObj;
-
-                        Text tx = new Text();
-                        tx.ID = shape.IdObj;
-                        tx.LocationX = rt.Location.X;
-                        tx.LocationY = rt.Location.Y;
-                        tx.Witdh = rt.Size.Width;
-                        tx.Height = rt.Size.Height;
-                        tx.Description = rt.Text;
+                        lstRt.Add(rt);
+                      
                         rt.TextChanged += Rt_TextChanged;
                         ptbDraw.Controls.Add(rt);
-                        lstText.Add(tx);
-                        //TextController.AddText(tx);
                     } else if ( shape.Name == "Circle")
                     {
                         RichTextBox rt = new RichTextBox();
@@ -121,18 +110,10 @@ namespace So_Do_Tu_Duy
                         rt.Size = new Size(shape.Witdh - 40, shape.Height - 45);
                         rt.Text = "Ghi nội dung của Sub Topic";
                         rt.Tag = shape.IdObj;
+                        lstRt.Add(rt);
 
-                        Text tx = new Text();
-                        tx.ID = shape.IdObj;
-                        tx.LocationX = rt.Location.X;
-                        tx.LocationY = rt.Location.Y;
-                        tx.Witdh = rt.Size.Width;
-                        tx.Height = rt.Size.Height;
-                        tx.Description = rt.Text;
                         rt.TextChanged += Rt_TextChanged;
                         ptbDraw.Controls.Add(rt);
-                        lstText.Add(tx);
-                        //TextController.AddText(tx);
                     }    
                     
                 }              
@@ -166,14 +147,7 @@ namespace So_Do_Tu_Duy
         } 
 
         public void DrawObj( Root root)
-        {
-            root.Draw(g2, myPen);
-            RichTextBox rt = new RichTextBox();
-            rt.Visible = true;
-            rt.Location = new Point(ptbDraw.Width / 2 - DefineSize.Width_Main / 2 + 1, ptbDraw.Height / 2 - DefineSize.Height_Main / 2 + 1);
-            rt.Size = new Size(DefineSize.Width_Main-2, DefineSize.Height_Main-2);
-            rt.Text = "Ghi nội dung của Main Topic";
-            ptbDraw.Controls.Add(rt);
+        {          
             foreach (var shape in root.lstObj)
             {
                 if(shape.Name=="Root")
@@ -207,20 +181,20 @@ namespace So_Do_Tu_Duy
             {
                 if (typeObj == 1)
                 {
-                    Rec rec = new Rec(idObj,"Rectangle", e.Location, DefineSize.Width, DefineSize.Height);
+                    Rec rec = new Rec(frmMain.idObj,"Rectangle", e.Location, DefineSize.Width, DefineSize.Height);
                     root.lstObj.Add(rec);
                     isDraw = false;
-                    idObj++;
+                    frmMain.idObj++;
                 }
                 else if (typeObj == 3)
                 {
                     point = e.Location;
                 } else if ( typeObj == 2 )
                 {
-                    Circle cir = new Circle(idObj,"Circle", e.Location,DefineSize.radius*2, DefineSize.radius*2);
+                    Circle cir = new Circle(frmMain.idObj, "Circle", e.Location,DefineSize.radius*2, DefineSize.radius*2);
                     root.lstObj.Add(cir);
                     isDraw = false;
-                    idObj++;
+                    frmMain.idObj++;
                 }                
                 DrawObj(root);
                 g2.DrawImage(bm, 0, 0);
@@ -234,11 +208,11 @@ namespace So_Do_Tu_Duy
             {
                  if (typeObj == 3)
                  {
-                    Curve cur = new Curve(idObj,"Curve", point, Math.Abs(e.Location.X - point.X), Math.Abs(e.Location.Y - point.Y));
+                    Curve cur = new Curve(frmMain.idObj, "Curve", point, Math.Abs(e.Location.X - point.X), Math.Abs(e.Location.Y - point.Y));
                     cur.p2 = e.Location;
                     root.lstObj.Add(cur);
                     isDraw = false;
-                    idObj++;
+                    frmMain.idObj++;
                 }            
                 
                 DrawObj(root);
@@ -254,6 +228,16 @@ namespace So_Do_Tu_Duy
             ProjectController.AddProject(pro);
 
             Shape sp = new Shape();
+
+            sp.ID = root.IdObj;
+            sp.LocationX = root.Point.X;
+            sp.LocationY = root.Point.Y;
+            sp.Witdh = root.Witdh;
+            sp.Height = root.Height;
+            sp.NameShape = root.Name;
+            sp.IDPro = frmMain.idPro;
+            ShapeController.AddShape(sp);
+
             foreach (var shape in root.lstObj)
             {
                 sp.ID = shape.IdObj;
@@ -261,22 +245,36 @@ namespace So_Do_Tu_Duy
                 sp.LocationY = shape.Point.Y;
                 sp.Witdh = shape.Witdh;
                 sp.Height = shape.Height;
-                sp.Description = "";
                 sp.NameShape = shape.Name;
                 sp.IDPro = frmMain.idPro;
                 ShapeController.AddShape(sp);
             }
-
-            foreach ( var temp in lstText )
+            Infor t = new Infor();
+            foreach ( var temp in lstRt )
             {
-                TextController.AddText(temp);
-            }    
-               
+                t.ID = Convert.ToInt32(temp.Tag);                
+                t.LocationX = temp.Location.X;
+                t.LocationY = temp.Location.Y;
+                t.Witdh = temp.Size.Width;
+                t.Height = temp.Size.Height;
+                t.Description = temp.Text;
+
+                TextController.AddText(t);
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMainTopic_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(ptbDraw.Controls.Count + "");
+            root.Draw(g2, myPen);
+            RichTextBox rt = new RichTextBox();
+            rt.Visible = true;
+            rt.Location = new Point(ptbDraw.Width / 2 - DefineSize.Width_Main / 2 + 1, ptbDraw.Height / 2 - DefineSize.Height_Main / 2 + 1);
+            rt.Size = new Size(DefineSize.Width_Main - 2, DefineSize.Height_Main - 2);
+            rt.Text = "Ghi nội dung của Main Topic";
+            rt.Tag = root.IdObj;
+            ptbDraw.Controls.Add(rt);
+            lstRt.Add(rt);
+            frmMain.idObj++;
         }
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)

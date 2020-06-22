@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MindMapModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Infor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="LocationX" Type="float" />
+          <Property Name="LocationY" Type="float" />
+          <Property Name="Witdh" Type="float" />
+          <Property Name="Height" Type="float" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="ProjectShape">
           <Key>
             <PropertyRef Name="IDPro" />
@@ -22,7 +33,6 @@
           <Property Name="LocationY" Type="float" />
           <Property Name="Witdh" Type="float" />
           <Property Name="Height" Type="float" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" />
           <Property Name="IDPro" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -34,17 +44,6 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="Text">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="LocationX" Type="float" />
-          <Property Name="LocationY" Type="float" />
-          <Property Name="Witdh" Type="float" />
-          <Property Name="Height" Type="float" />
-          <Property Name="Description" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK_Shape_ProjectShape">
           <End Role="ProjectShape" Type="Self.ProjectShape" Multiplicity="0..1" />
@@ -60,28 +59,28 @@
         </Association>
         <Association Name="FK_Text_Shape">
           <End Role="Shape" Type="Self.Shape" Multiplicity="1" />
-          <End Role="Text" Type="Self.Text" Multiplicity="0..1" />
+          <End Role="Infor" Type="Self.Infor" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Shape">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Text">
+            <Dependent Role="Infor">
               <PropertyRef Name="ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MindMapModelStoreContainer">
+          <EntitySet Name="Infor" EntityType="Self.Infor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectShape" EntityType="Self.ProjectShape" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Shape" EntityType="Self.Shape" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Text" EntityType="Self.Text" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Shape_ProjectShape" Association="Self.FK_Shape_ProjectShape">
             <End Role="ProjectShape" EntitySet="ProjectShape" />
             <End Role="Shape" EntitySet="Shape" />
           </AssociationSet>
           <AssociationSet Name="FK_Text_Shape" Association="Self.FK_Text_Shape">
             <End Role="Shape" EntitySet="Shape" />
-            <End Role="Text" EntitySet="Text" />
+            <End Role="Infor" EntitySet="Infor" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -89,19 +88,31 @@
     <edmx:ConceptualModels>
       <Schema Namespace="MindMapModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DBMindMapEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Infors" EntityType="MindMapModel.Infor" />
           <EntitySet Name="ProjectShapes" EntityType="MindMapModel.ProjectShape" />
           <EntitySet Name="Shapes" EntityType="MindMapModel.Shape" />
           <EntitySet Name="sysdiagrams" EntityType="MindMapModel.sysdiagram" />
-          <EntitySet Name="Texts" EntityType="MindMapModel.Text" />
+          <AssociationSet Name="FK_Text_Shape" Association="MindMapModel.FK_Text_Shape">
+            <End Role="Shape" EntitySet="Shapes" />
+            <End Role="Infor" EntitySet="Infors" />
+          </AssociationSet>
           <AssociationSet Name="FK_Shape_ProjectShape" Association="MindMapModel.FK_Shape_ProjectShape">
             <End Role="ProjectShape" EntitySet="ProjectShapes" />
             <End Role="Shape" EntitySet="Shapes" />
           </AssociationSet>
-          <AssociationSet Name="FK_Text_Shape" Association="MindMapModel.FK_Text_Shape">
-            <End Role="Shape" EntitySet="Shapes" />
-            <End Role="Text" EntitySet="Texts" />
-          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Infor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="LocationX" Type="Double" />
+          <Property Name="LocationY" Type="Double" />
+          <Property Name="Witdh" Type="Double" />
+          <Property Name="Height" Type="Double" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shape" Relationship="MindMapModel.FK_Text_Shape" FromRole="Infor" ToRole="Shape" />
+        </EntityType>
         <EntityType Name="ProjectShape">
           <Key>
             <PropertyRef Name="IDPro" />
@@ -120,10 +131,9 @@
           <Property Name="LocationY" Type="Double" />
           <Property Name="Witdh" Type="Double" />
           <Property Name="Height" Type="Double" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="IDPro" Type="Int32" />
+          <NavigationProperty Name="Infor" Relationship="MindMapModel.FK_Text_Shape" FromRole="Shape" ToRole="Infor" />
           <NavigationProperty Name="ProjectShape" Relationship="MindMapModel.FK_Shape_ProjectShape" FromRole="Shape" ToRole="ProjectShape" />
-          <NavigationProperty Name="Text" Relationship="MindMapModel.FK_Text_Shape" FromRole="Shape" ToRole="Text" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -135,18 +145,18 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Text">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="LocationX" Type="Double" />
-          <Property Name="LocationY" Type="Double" />
-          <Property Name="Witdh" Type="Double" />
-          <Property Name="Height" Type="Double" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Shape" Relationship="MindMapModel.FK_Text_Shape" FromRole="Text" ToRole="Shape" />
-        </EntityType>
+        <Association Name="FK_Text_Shape">
+          <End Type="MindMapModel.Shape" Role="Shape" Multiplicity="1" />
+          <End Type="MindMapModel.Infor" Role="Infor" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Shape">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Infor">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Shape_ProjectShape">
           <End Type="MindMapModel.ProjectShape" Role="ProjectShape" Multiplicity="0..1" />
           <End Type="MindMapModel.Shape" Role="Shape" Multiplicity="*" />
@@ -159,24 +169,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Text_Shape">
-          <End Type="MindMapModel.Shape" Role="Shape" Multiplicity="1" />
-          <End Type="MindMapModel.Text" Role="Text" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Shape">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Text">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MindMapModelStoreContainer" CdmEntityContainer="DBMindMapEntities">
+          <EntitySetMapping Name="Infors">
+            <EntityTypeMapping TypeName="MindMapModel.Infor">
+              <MappingFragment StoreEntitySet="Infor">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Witdh" ColumnName="Witdh" />
+                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
+                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ProjectShapes">
             <EntityTypeMapping TypeName="MindMapModel.ProjectShape">
               <MappingFragment StoreEntitySet="ProjectShape">
@@ -189,7 +199,6 @@
             <EntityTypeMapping TypeName="MindMapModel.Shape">
               <MappingFragment StoreEntitySet="Shape">
                 <ScalarProperty Name="IDPro" ColumnName="IDPro" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Height" ColumnName="Height" />
                 <ScalarProperty Name="Witdh" ColumnName="Witdh" />
                 <ScalarProperty Name="LocationY" ColumnName="LocationY" />
@@ -207,18 +216,6 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Texts">
-            <EntityTypeMapping TypeName="MindMapModel.Text">
-              <MappingFragment StoreEntitySet="Text">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Witdh" ColumnName="Witdh" />
-                <ScalarProperty Name="LocationY" ColumnName="LocationY" />
-                <ScalarProperty Name="LocationX" ColumnName="LocationX" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

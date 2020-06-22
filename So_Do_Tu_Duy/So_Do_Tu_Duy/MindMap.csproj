@@ -78,6 +78,9 @@
     <Compile Include="Model\DefineSize.cs" />
     <Compile Include="Model\DrawObject.cs" />
     <Compile Include="Model\Eclipse.cs" />
+    <Compile Include="Model\Infor.cs">
+      <DependentUpon>DBMindMap.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ProjectShape.cs">
       <DependentUpon>DBMindMap.tt</DependentUpon>
     </Compile>
@@ -85,9 +88,6 @@
       <DependentUpon>DBMindMap.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>DBMindMap.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Text.cs">
       <DependentUpon>DBMindMap.tt</DependentUpon>
     </Compile>
     <Compile Include="View\frmListProject.cs">
@@ -169,9 +169,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Image\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\DBMindMap.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

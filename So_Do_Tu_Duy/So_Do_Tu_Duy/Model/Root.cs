@@ -20,6 +20,7 @@ namespace So_Do_Tu_Duy
             Rectangle _rect = new Rectangle(base.Point.X,base.Point.Y,base.Witdh,base.Height);
 
             myGp.DrawRectangle(myPen, _rect);
+
         }
     }
 }
