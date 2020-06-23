@@ -51,5 +51,10 @@ namespace So_Do_Tu_Duy.Controller
                 return pr;
             }    
         }
+
+        //public static bool DeleteProject()
+        //{
+
+        //}
     }
 }
