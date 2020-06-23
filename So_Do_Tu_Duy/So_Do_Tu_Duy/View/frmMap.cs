@@ -28,7 +28,7 @@ namespace So_Do_Tu_Duy
         public Pen myPen;
         public SolidBrush solidBrush;
 
-        Root root;
+        public static Root root;
        
        
 
@@ -209,7 +209,8 @@ namespace So_Do_Tu_Duy
                  if (typeObj == 3)
                  {
                     Curve cur = new Curve(frmMain.idObj, "Curve", point, Math.Abs(e.Location.X - point.X), Math.Abs(e.Location.Y - point.Y));
-                    cur.p2 = e.Location;
+                    cur.P2 = e.Location;
+                    //MessageBox.Show(cur.p2.X + "");
                     root.lstObj.Add(cur);
                     isDraw = false;
                     frmMain.idObj++;
@@ -239,7 +240,7 @@ namespace So_Do_Tu_Duy
             ShapeController.AddShape(sp);
 
             foreach (var shape in root.lstObj)
-            {
+            {              
                 sp.ID = shape.IdObj;
                 sp.LocationX = shape.Point.X;
                 sp.LocationY = shape.Point.Y;
@@ -247,6 +248,11 @@ namespace So_Do_Tu_Duy
                 sp.Height = shape.Height;
                 sp.NameShape = shape.Name;
                 sp.IDPro = frmMain.idPro;
+                if ( shape.Name == "Curve" )
+                {
+                    sp.LocationX2 = shape.P2.X;
+                    sp.LocationY2 = shape.P2.Y;
+                }    
                 ShapeController.AddShape(sp);
             }
             Infor t = new Infor();

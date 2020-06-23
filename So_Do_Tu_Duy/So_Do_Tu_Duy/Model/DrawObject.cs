@@ -16,15 +16,32 @@ namespace So_Do_Tu_Duy
 
         public Point Point = new Point(0, 0);
 
+        public Point P2;
+
         public int Witdh;
 
         public int Height;
+
+        public DrawObject()
+        {
+
+        }
 
         public DrawObject ( int idObj, string name, Point point, int witdh, int height)
         {
             IdObj = idObj; 
             Name = name;
             Point = point;
+            Witdh = witdh;
+            Height = height;
+        }
+
+        public DrawObject(int idObj, string name, Point point, Point p2, int witdh, int height)
+        {
+            IdObj = idObj;
+            Name = name;
+            Point = point;
+            P2 = p2;
             Witdh = witdh;
             Height = height;
         }

@@ -34,6 +34,8 @@
           <Property Name="Witdh" Type="float" />
           <Property Name="Height" Type="float" />
           <Property Name="IDPro" Type="int" />
+          <Property Name="LocationX2" Type="int" />
+          <Property Name="LocationY2" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -132,6 +134,8 @@
           <Property Name="Witdh" Type="Double" />
           <Property Name="Height" Type="Double" />
           <Property Name="IDPro" Type="Int32" />
+          <Property Name="LocationX2" Type="Int32" />
+          <Property Name="LocationY2" Type="Int32" />
           <NavigationProperty Name="Infor" Relationship="MindMapModel.FK_Text_Shape" FromRole="Shape" ToRole="Infor" />
           <NavigationProperty Name="ProjectShape" Relationship="MindMapModel.FK_Shape_ProjectShape" FromRole="Shape" ToRole="ProjectShape" />
         </EntityType>
@@ -198,6 +202,8 @@
           <EntitySetMapping Name="Shapes">
             <EntityTypeMapping TypeName="MindMapModel.Shape">
               <MappingFragment StoreEntitySet="Shape">
+                <ScalarProperty Name="LocationY2" ColumnName="LocationY2" />
+                <ScalarProperty Name="LocationX2" ColumnName="LocationX2" />
                 <ScalarProperty Name="IDPro" ColumnName="IDPro" />
                 <ScalarProperty Name="Height" ColumnName="Height" />
                 <ScalarProperty Name="Witdh" ColumnName="Witdh" />

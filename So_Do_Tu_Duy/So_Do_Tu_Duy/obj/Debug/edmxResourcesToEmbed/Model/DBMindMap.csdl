@@ -45,6 +45,8 @@
     <Property Name="Witdh" Type="Double" />
     <Property Name="Height" Type="Double" />
     <Property Name="IDPro" Type="Int32" />
+    <Property Name="LocationX2" Type="Int32" />
+    <Property Name="LocationY2" Type="Int32" />
     <NavigationProperty Name="Infor" Relationship="MindMapModel.FK_Text_Shape" FromRole="Shape" ToRole="Infor" />
     <NavigationProperty Name="ProjectShape" Relationship="MindMapModel.FK_Shape_ProjectShape" FromRole="Shape" ToRole="ProjectShape" />
   </EntityType>

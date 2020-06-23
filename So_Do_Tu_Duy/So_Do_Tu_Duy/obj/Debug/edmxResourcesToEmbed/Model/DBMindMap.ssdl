@@ -29,6 +29,8 @@
     <Property Name="Witdh" Type="float" />
     <Property Name="Height" Type="float" />
     <Property Name="IDPro" Type="int" />
+    <Property Name="LocationX2" Type="int" />
+    <Property Name="LocationY2" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
