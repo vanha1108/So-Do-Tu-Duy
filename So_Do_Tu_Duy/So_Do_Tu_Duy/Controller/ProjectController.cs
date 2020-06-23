@@ -31,6 +31,17 @@ namespace So_Do_Tu_Duy.Controller
             }    
         }
 
+        public static List<ProjectShape> getListProject(int id)
+        {
+            using (var _context = new DBMindMapEntities())
+            {
+                var pr = (from t in _context.ProjectShapes
+                          where t.IDPro == id
+                          select t).ToList();
+                return pr;
+            }
+        }
+
         public static List<ProjectShape> getListProject()
         {
             using ( var _context = new DBMindMapEntities() )

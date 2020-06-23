@@ -1,5 +1,6 @@
 ﻿using So_Do_Tu_Duy.Controller;
 using So_Do_Tu_Duy.Model;
+using So_Do_Tu_Duy.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -96,11 +97,9 @@ namespace So_Do_Tu_Duy
                         rt.Visible = true;
                         rt.Location = new Point(shape.Point.X + 1, shape.Point.Y + 1);
                         rt.Size = new Size(shape.Witdh - 2, shape.Height - 2);
-                        rt.Text = "Ghi nội dung của Topic";
                         rt.Tag = shape.IdObj;
                         lstRt.Add(rt);
                       
-                        rt.TextChanged += Rt_TextChanged;
                         ptbDraw.Controls.Add(rt);
                     } else if ( shape.Name == "Circle")
                     {
@@ -108,21 +107,14 @@ namespace So_Do_Tu_Duy
                         rt.Visible = true;
                         rt.Location = new Point(shape.Point.X + 20, shape.Point.Y + 20);
                         rt.Size = new Size(shape.Witdh - 40, shape.Height - 45);
-                        rt.Text = "Ghi nội dung của Sub Topic";
                         rt.Tag = shape.IdObj;
                         lstRt.Add(rt);
 
-                        rt.TextChanged += Rt_TextChanged;
                         ptbDraw.Controls.Add(rt);
                     }    
                     
                 }              
              }    
-        }
-
-        private void Rt_TextChanged(object sender, EventArgs e)
-        {
-           
         }
 
         private void btnSubTopic_Click(object sender, EventArgs e)
@@ -210,7 +202,6 @@ namespace So_Do_Tu_Duy
                  {
                     Curve cur = new Curve(frmMain.idObj, "Curve", point, Math.Abs(e.Location.X - point.X), Math.Abs(e.Location.Y - point.Y));
                     cur.P2 = e.Location;
-                    //MessageBox.Show(cur.p2.X + "");
                     root.lstObj.Add(cur);
                     isDraw = false;
                     frmMain.idObj++;
@@ -223,49 +214,100 @@ namespace So_Do_Tu_Duy
         }
         private void btnExport_Click(object sender, EventArgs e)
         {
-            ProjectShape pro = new ProjectShape();
-            pro.IDPro = frmMain.idPro;
-            pro.Note = frmOutliner.note;
-            ProjectController.AddProject(pro);
-
-            Shape sp = new Shape();
-
-            sp.ID = root.IdObj;
-            sp.LocationX = root.Point.X;
-            sp.LocationY = root.Point.Y;
-            sp.Witdh = root.Witdh;
-            sp.Height = root.Height;
-            sp.NameShape = root.Name;
-            sp.IDPro = frmMain.idPro;
-            ShapeController.AddShape(sp);
-
-            foreach (var shape in root.lstObj)
-            {              
-                sp.ID = shape.IdObj;
-                sp.LocationX = shape.Point.X;
-                sp.LocationY = shape.Point.Y;
-                sp.Witdh = shape.Witdh;
-                sp.Height = shape.Height;
-                sp.NameShape = shape.Name;
-                sp.IDPro = frmMain.idPro;
-                if ( shape.Name == "Curve" )
-                {
-                    sp.LocationX2 = shape.P2.X;
-                    sp.LocationY2 = shape.P2.Y;
-                }    
-                ShapeController.AddShape(sp);
-            }
-            Infor t = new Infor();
-            foreach ( var temp in lstRt )
+            if (frmListProject.OpenPro != -1)
             {
-                t.ID = Convert.ToInt32(temp.Tag);                
-                t.LocationX = temp.Location.X;
-                t.LocationY = temp.Location.Y;
-                t.Witdh = temp.Size.Width;
-                t.Height = temp.Size.Height;
-                t.Description = temp.Text;
+                ProjectShape pro = new ProjectShape();
+                pro.IDPro = frmListProject.OpenPro;
+                pro.Note = frmOutliner.note;
+                ProjectController.AddProject(pro);
 
-                TextController.AddText(t);
+                Shape sp = new Shape();
+
+                sp.ID = root.IdObj;
+                sp.LocationX = root.Point.X;
+                sp.LocationY = root.Point.Y;
+                sp.Witdh = root.Witdh;
+                sp.Height = root.Height;
+                sp.NameShape = root.Name;
+                sp.IDPro = frmListProject.OpenPro;
+                ShapeController.AddShape(sp);
+
+                foreach (var shape in root.lstObj)
+                {
+                    sp.ID = shape.IdObj;
+                    sp.LocationX = shape.Point.X;
+                    sp.LocationY = shape.Point.Y;
+                    sp.Witdh = shape.Witdh;
+                    sp.Height = shape.Height;
+                    sp.NameShape = shape.Name;
+                    sp.IDPro = frmListProject.OpenPro;
+                    if (shape.Name == "Curve")
+                    {
+                        sp.LocationX2 = shape.P2.X;
+                        sp.LocationY2 = shape.P2.Y;
+                    }
+                    ShapeController.AddShape(sp);
+                }
+                Infor t = new Infor();
+                foreach (var temp in lstRt)
+                {
+                    t.ID = Convert.ToInt32(temp.Tag);
+                    t.LocationX = temp.Location.X;
+                    t.LocationY = temp.Location.Y;
+                    t.Witdh = temp.Size.Width;
+                    t.Height = temp.Size.Height;
+                    t.Description = temp.Text;
+
+                    TextController.AddText(t);
+                }
+            }
+            else
+            {
+
+                ProjectShape pro = new ProjectShape();
+                pro.IDPro = frmMain.idPro;
+                pro.Note = frmOutliner.note;
+                ProjectController.AddProject(pro);
+
+                Shape sp = new Shape();
+
+                sp.ID = root.IdObj;
+                sp.LocationX = root.Point.X;
+                sp.LocationY = root.Point.Y;
+                sp.Witdh = root.Witdh;
+                sp.Height = root.Height;
+                sp.NameShape = root.Name;
+                sp.IDPro = frmMain.idPro;
+                ShapeController.AddShape(sp);
+
+                foreach (var shape in root.lstObj)
+                {
+                    sp.ID = shape.IdObj;
+                    sp.LocationX = shape.Point.X;
+                    sp.LocationY = shape.Point.Y;
+                    sp.Witdh = shape.Witdh;
+                    sp.Height = shape.Height;
+                    sp.NameShape = shape.Name;
+                    sp.IDPro = frmMain.idPro;
+                    if (shape.Name == "Curve")
+                    {
+                        sp.LocationX2 = shape.P2.X;
+                        sp.LocationY2 = shape.P2.Y;
+                    }
+                    ShapeController.AddShape(sp);
+                }
+                Infor t = new Infor();
+                foreach (var temp in lstRt)
+                {
+                    t.ID = Convert.ToInt32(temp.Tag);
+                    t.LocationX = temp.Location.X;
+                    t.LocationY = temp.Location.Y;
+                    t.Witdh = temp.Size.Width;
+                    t.Height = temp.Size.Height;
+                    t.Description = temp.Text;
+
+                    TextController.AddText(t);
+                }
             }
         }
 
@@ -276,7 +318,6 @@ namespace So_Do_Tu_Duy
             rt.Visible = true;
             rt.Location = new Point(ptbDraw.Width / 2 - DefineSize.Width_Main / 2 + 1, ptbDraw.Height / 2 - DefineSize.Height_Main / 2 + 1);
             rt.Size = new Size(DefineSize.Width_Main - 2, DefineSize.Height_Main - 2);
-            rt.Text = "Ghi nội dung của Main Topic";
             rt.Tag = root.IdObj;
             ptbDraw.Controls.Add(rt);
             lstRt.Add(rt);
