@@ -118,12 +118,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Rec.cs" />
     <Compile Include="Model\Root.cs" />
-    <Compile Include="View\UCOutliner.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UCOutliner.Designer.cs">
-      <DependentUpon>UCOutliner.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="View\frmListProject.resx">
       <DependentUpon>frmListProject.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,9 +139,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\UCOutliner.resx">
-      <DependentUpon>UCOutliner.cs</DependentUpon>
-    </EmbeddedResource>
     <EntityDeploy Include="Model\DBMindMap.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBMindMap.Designer.cs</LastGenOutput>

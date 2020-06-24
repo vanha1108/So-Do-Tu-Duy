@@ -22,7 +22,7 @@ namespace So_Do_Tu_Duy
 
         Point point;
         public static int typeObj = -1;
-        public static bool isDraw = true;
+        public static bool isDraw = false;
 
         public Bitmap bm;
         public Graphics g1, g2;
@@ -47,11 +47,12 @@ namespace So_Do_Tu_Duy
             myPen.Width = 2;
 
             root = new Root(frmMain.idObj,"Root",new Point(ptbDraw.Width/2 - DefineSize.Width_Main/2, ptbDraw.Height/2 - DefineSize.Height_Main/2),DefineSize.Width_Main,DefineSize.Height_Main);
-            g1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            g1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;          
         }  
 
         private void btnTopic_Click(object sender, EventArgs e)
         {
+            ResetColor();
             isDraw = true;
             typeObj = 1;
             btnTopic.BackColor = Color.GreenYellow;
@@ -118,14 +119,17 @@ namespace So_Do_Tu_Duy
         }
 
         private void btnSubTopic_Click(object sender, EventArgs e)
-        {
+        {          
+            ResetColor();
             isDraw = true;
             btnSubTopic.BackColor = Color.GreenYellow;
             typeObj = 2;
+
         }
 
         private void btnRelationship_Click(object sender, EventArgs e)
         {
+            ResetColor();
             isDraw = true;
             btnRelationship.BackColor = Color.GreenYellow;
             typeObj = 3;
@@ -216,6 +220,7 @@ namespace So_Do_Tu_Duy
         {
             if (frmListProject.OpenPro != -1)
             {
+                // Update
                 ProjectShape pro = new ProjectShape();
                 pro.IDPro = frmListProject.OpenPro;
                 pro.Note = frmOutliner.note;
@@ -263,7 +268,13 @@ namespace So_Do_Tu_Duy
             }
             else
             {
-
+                // Add new
+                var lst = ProjectController.getListProject(frmMain.idPro);
+                while (lst.Count() > 0)
+                {
+                    frmMain.idPro++;
+                    lst = ProjectController.getListProject(frmMain.idPro);
+                };
                 ProjectShape pro = new ProjectShape();
                 pro.IDPro = frmMain.idPro;
                 pro.Note = frmOutliner.note;
@@ -271,24 +282,38 @@ namespace So_Do_Tu_Duy
 
                 Shape sp = new Shape();
 
+                // Lưu root
+                var c = ShapeController.CheckShape(root.IdObj);
+                while ( c.Count() > 0 )
+                {
+                    root.IdObj = root.IdObj + 1;
+                    c = ShapeController.CheckShape(root.IdObj);
+                }    
                 sp.ID = root.IdObj;
                 sp.LocationX = root.Point.X;
                 sp.LocationY = root.Point.Y;
                 sp.Witdh = root.Witdh;
                 sp.Height = root.Height;
                 sp.NameShape = root.Name;
-                sp.IDPro = frmMain.idPro;
+                sp.IDPro = pro.IDPro;
                 ShapeController.AddShape(sp);
 
                 foreach (var shape in root.lstObj)
                 {
+                    // Lưu shape
+                    var d = ShapeController.CheckShape(shape.IdObj);
+                    while (d.Count() > 0)
+                    {
+                        shape.IdObj = shape.IdObj + 1;
+                        d = ShapeController.CheckShape(shape.IdObj);
+                    }
                     sp.ID = shape.IdObj;
                     sp.LocationX = shape.Point.X;
                     sp.LocationY = shape.Point.Y;
                     sp.Witdh = shape.Witdh;
                     sp.Height = shape.Height;
                     sp.NameShape = shape.Name;
-                    sp.IDPro = frmMain.idPro;
+                    sp.IDPro = pro.IDPro;
                     if (shape.Name == "Curve")
                     {
                         sp.LocationX2 = shape.P2.X;
@@ -296,6 +321,7 @@ namespace So_Do_Tu_Duy
                     }
                     ShapeController.AddShape(sp);
                 }
+
                 Infor t = new Infor();
                 foreach (var temp in lstRt)
                 {
@@ -322,6 +348,7 @@ namespace So_Do_Tu_Duy
             ptbDraw.Controls.Add(rt);
             lstRt.Add(rt);
             frmMain.idObj++;
+            btnMainTopic.Enabled = false;
         }
 
         private void frmMap_FormClosing(object sender, FormClosingEventArgs e)
@@ -330,6 +357,11 @@ namespace So_Do_Tu_Duy
             if (dialog == DialogResult.No)
             {
                 e.Cancel = true;
+            } else
+            {
+                frmOutliner.note = "";
+                btnMainTopic.Enabled = true;
+                frmListProject.OpenPro = -1;
             }
         }
 

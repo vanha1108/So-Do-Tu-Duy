@@ -33,6 +33,7 @@
             this.dtgvListProject = new System.Windows.Forms.DataGridView();
             this.cIDPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDeleteProject = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListProject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,11 +84,22 @@
             this.cNote.MinimumWidth = 6;
             this.cNote.Name = "cNote";
             // 
+            // btnDeleteProject
+            // 
+            this.btnDeleteProject.Location = new System.Drawing.Point(353, 337);
+            this.btnDeleteProject.Name = "btnDeleteProject";
+            this.btnDeleteProject.Size = new System.Drawing.Size(148, 51);
+            this.btnDeleteProject.TabIndex = 4;
+            this.btnDeleteProject.Text = "Delete Project";
+            this.btnDeleteProject.UseVisualStyleBackColor = true;
+            this.btnDeleteProject.Click += new System.EventHandler(this.btnDeleteProject_Click);
+            // 
             // frmListProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 412);
+            this.Controls.Add(this.btnDeleteProject);
             this.Controls.Add(this.dtgvListProject);
             this.Controls.Add(this.btnOpenProject);
             this.Controls.Add(this.label1);
@@ -102,9 +114,10 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnOpenProject;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIDPro;
         private System.Windows.Forms.DataGridViewTextBoxColumn cNote;
         public System.Windows.Forms.DataGridView dtgvListProject;
+        public System.Windows.Forms.Button btnOpenProject;
+        public System.Windows.Forms.Button btnDeleteProject;
     }
 }

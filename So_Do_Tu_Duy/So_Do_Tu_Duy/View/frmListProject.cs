@@ -20,86 +20,133 @@ namespace So_Do_Tu_Duy.View
             InitializeComponent();
             this.cIDPro.DataPropertyName = nameof(ProjectShape.IDPro);
             this.cNote.DataPropertyName = nameof(ProjectShape.Note);
+
+            if (ProjectController.getListProject().Count() != 0)
+            {              
+                this.btnDeleteProject.Enabled = true;
+                this.btnOpenProject.Enabled = true;
+            }
+            else
+            {
+                this.btnDeleteProject.Enabled = false;
+                this.btnOpenProject.Enabled = false;
+            }
         }
 
         private void btnOpenProject_Click(object sender, EventArgs e)
         {
-            int x = int.Parse(this.dtgvListProject.CurrentRow.Cells[0].Value.ToString());
-            OpenPro = x;
-            this.Close();
-          
-            frmMap fMap = new frmMap();
-            fMap.Show();
-            List<Shape> openShape = new List<Shape>();
-
-            openShape = ShapeController.getListShape(OpenPro);
-            foreach ( var s in openShape )
+            try
             {
-                if ( s.NameShape == "Root" )
-                {
-                    MessageBox.Show("Project " + OpenPro);
-                    frmMap.root = new Root(s.ID, "Root", new Point(Convert.ToInt32(s.LocationX),Convert.ToInt32(s.LocationY)), Convert.ToInt32(s.Witdh), Convert.ToInt32(s.Height));
-                    frmMap.root.Draw(fMap.g2, fMap.myPen);
-                    //fMap.g2.DrawImage(fMap.bm, 0, 0);
+                int x = int.Parse(this.dtgvListProject.CurrentRow.Cells[0].Value.ToString());
+                OpenPro = x;
+                this.Close();
 
-                    Infor infor = TextController.getInfor(s.ID);
-                    if ( infor != null )
-                    {
-                        RichTextBox rt = new RichTextBox();
-                        rt.Visible = true;
-                        rt.Location = new Point( Convert.ToInt32(infor.LocationX), Convert.ToInt32(infor.LocationY));
-                        rt.Size = new Size(Convert.ToInt32(infor.Witdh), Convert.ToInt32(infor.Height));
-                        rt.Text = infor.Description;
-                        rt.Tag = infor.ID;
-                        fMap.ptbDraw.Controls.Add(rt);
-                        fMap.lstRt.Add(rt);
-                    }    
-                } else if ( s.NameShape == "Rectangle")
-                {
-                    //MessageBox.Show("Rec");
-                    Rec rec = new Rec(s.ID, "Rectangle", new Point(Convert.ToInt32(s.LocationX), Convert.ToInt32(s.LocationY)), Convert.ToInt32(s.Witdh), Convert.ToInt32(s.Height));
-                    frmMap.root.lstObj.Add(rec);
+                var pro = ProjectController.getProject(OpenPro);
+                frmOutliner.note = pro.Note;
 
-                    Infor infor = TextController.getInfor(s.ID);
-                    if (infor != null)
+
+                frmMap fMap = new frmMap();
+                fMap.Show();
+                List<Shape> openShape = new List<Shape>();
+
+                openShape = ShapeController.getListShape(OpenPro);
+                foreach (var s in openShape)
+                {
+                    if (s.NameShape == "Root")
                     {
-                        RichTextBox rt = new RichTextBox();
-                        rt.Visible = true;
-                        rt.Location = new Point(Convert.ToInt32(infor.LocationX), Convert.ToInt32(infor.LocationY));
-                        rt.Size = new Size(Convert.ToInt32(infor.Witdh), Convert.ToInt32(infor.Height));
-                        rt.Text = infor.Description;
-                        rt.Tag = infor.ID;
-                        fMap.ptbDraw.Controls.Add(rt);
-                        fMap.lstRt.Add(rt);
+                        MessageBox.Show("Project " + OpenPro);
+                        frmMap.root = new Root(s.ID, "Root", new Point(Convert.ToInt32(s.LocationX), Convert.ToInt32(s.LocationY)), Convert.ToInt32(s.Witdh), Convert.ToInt32(s.Height));
+                        frmMap.root.Draw(fMap.g2, fMap.myPen);
+
+                        Infor infor = TextController.getInfor(s.ID);
+                        if (infor != null)
+                        {
+                            RichTextBox rt = new RichTextBox();
+                            rt.Visible = true;
+                            rt.Location = new Point(Convert.ToInt32(infor.LocationX), Convert.ToInt32(infor.LocationY));
+                            rt.Size = new Size(Convert.ToInt32(infor.Witdh), Convert.ToInt32(infor.Height));
+                            rt.Text = infor.Description;
+                            rt.Tag = infor.ID;
+                            fMap.ptbDraw.Controls.Add(rt);
+                            fMap.lstRt.Add(rt);
+                        }
                     }
-                } else if ( s.NameShape == "Circle" )
-                {
-                    //MessageBox.Show("Cir");
-                    Circle cir = new Circle(s.ID, "Circle", new Point(Convert.ToInt32(s.LocationX), Convert.ToInt32(s.LocationY)), Convert.ToInt32(s.Witdh), Convert.ToInt32(s.Height));
-                    frmMap.root.lstObj.Add(cir);
-
-                    Infor infor = TextController.getInfor(s.ID);
-                    if (infor != null)
+                    else if (s.NameShape == "Rectangle")
                     {
-                        RichTextBox rt = new RichTextBox();
-                        rt.Visible = true;
-                        rt.Location = new Point(Convert.ToInt32(infor.LocationX), Convert.ToInt32(infor.LocationY));
-                        rt.Size = new Size(Convert.ToInt32(infor.Witdh), Convert.ToInt32(infor.Height));
-                        rt.Text = infor.Description;
-                        rt.Tag = infor.ID;
-                        fMap.ptbDraw.Controls.Add(rt);
-                        fMap.lstRt.Add(rt);
+                        //MessageBox.Show("Rec");
+                        Rec rec = new Rec(s.ID, "Rectangle", new Point(Convert.ToInt32(s.LocationX), Convert.ToInt32(s.LocationY)), Convert.ToInt32(s.Witdh), Convert.ToInt32(s.Height));
+                        frmMap.root.lstObj.Add(rec);
+
+                        Infor infor = TextController.getInfor(s.ID);
+                        if (infor != null)
+                        {
+                            RichTextBox rt = new RichTextBox();
+                            rt.Visible = true;
+                            rt.Location = new Point(Convert.ToInt32(infor.LocationX), Convert.ToInt32(infor.LocationY));
+                            rt.Size = new Size(Convert.ToInt32(infor.Witdh), Convert.ToInt32(infor.Height));
+                            rt.Text = infor.Description;
+                            rt.Tag = infor.ID;
+                            fMap.ptbDraw.Controls.Add(rt);
+                            fMap.lstRt.Add(rt);
+                        }
                     }
-                } else if ( s.NameShape == "Curve" )
-                {
-                    //MessageBox.Show("Cur");
-                    Curve cur = new Curve(s.ID, "Curve", new Point(Convert.ToInt32(s.LocationX), Convert.ToInt32(s.LocationY)), new Point(Convert.ToInt32(s.LocationX2), Convert.ToInt32(s.LocationY2)), Convert.ToInt32(s.Witdh), Convert.ToInt32(s.Height));
-                    frmMap.root.lstObj.Add(cur);
+                    else if (s.NameShape == "Circle")
+                    {
+                        //MessageBox.Show("Cir");
+                        Circle cir = new Circle(s.ID, "Circle", new Point(Convert.ToInt32(s.LocationX), Convert.ToInt32(s.LocationY)), Convert.ToInt32(s.Witdh), Convert.ToInt32(s.Height));
+                        frmMap.root.lstObj.Add(cir);
+
+                        Infor infor = TextController.getInfor(s.ID);
+                        if (infor != null)
+                        {
+                            RichTextBox rt = new RichTextBox();
+                            rt.Visible = true;
+                            rt.Location = new Point(Convert.ToInt32(infor.LocationX), Convert.ToInt32(infor.LocationY));
+                            rt.Size = new Size(Convert.ToInt32(infor.Witdh), Convert.ToInt32(infor.Height));
+                            rt.Text = infor.Description;
+                            rt.Tag = infor.ID;
+                            fMap.ptbDraw.Controls.Add(rt);
+                            fMap.lstRt.Add(rt);
+                        }
+                    }
+                    else if (s.NameShape == "Curve")
+                    {
+                        //MessageBox.Show("Cur");
+                        Curve cur = new Curve(s.ID, "Curve", new Point(Convert.ToInt32(s.LocationX), Convert.ToInt32(s.LocationY)), new Point(Convert.ToInt32(s.LocationX2), Convert.ToInt32(s.LocationY2)), Convert.ToInt32(s.Witdh), Convert.ToInt32(s.Height));
+                        frmMap.root.lstObj.Add(cur);
+                    }
                 }
-            }
-            fMap.DrawObj(frmMap.root);
-            //fMap.g2.DrawImage(fMap.bm, fMap.ptbDraw.ClientRectangle.Width, fMap.ptbDraw.ClientRectangle.Height);
+                fMap.DrawObj(frmMap.root);
+            } catch { }
+            
+        }
 
+        private void btnDeleteProject_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int del = int.Parse(this.dtgvListProject.CurrentRow.Cells[0].Value.ToString());
+
+                ProjectController.DeleteProject(del);
+
+                if (ProjectController.getListProject().Count() != 0)
+                {
+                    BindingSource source = new BindingSource();
+                    source.DataSource = ProjectController.getListProject();
+                    this.dtgvListProject.DataSource = source;
+                    this.dtgvListProject.Columns["Shapes"].Visible = false;
+
+                    this.btnDeleteProject.Enabled = true;
+                    this.btnOpenProject.Enabled = true;
+                }
+                else
+                {
+                    this.dtgvListProject.DataSource = null;
+                    this.btnDeleteProject.Enabled = false;
+                    this.btnOpenProject.Enabled = false;
+                }
+            } catch { }
+            
         }
     }
 }

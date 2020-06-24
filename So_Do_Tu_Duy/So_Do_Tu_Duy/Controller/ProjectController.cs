@@ -31,6 +31,17 @@ namespace So_Do_Tu_Duy.Controller
             }    
         }
 
+        public static ProjectShape getProject(int id)
+        {
+            using (var _context = new DBMindMapEntities())
+            {
+                var pr = (from t in _context.ProjectShapes
+                          where t.IDPro == id
+                          select t).SingleOrDefault();
+                return pr;
+            }
+        }
+
         public static List<ProjectShape> getListProject(int id)
         {
             using (var _context = new DBMindMapEntities())
@@ -52,9 +63,48 @@ namespace So_Do_Tu_Duy.Controller
             }    
         }
 
-        //public static bool DeleteProject()
-        //{
+        public static bool DeleteProject(int id)
+        {
+            using ( var _context = new DBMindMapEntities() )
+            {
+                try
+                {
+                    var lstidShape = (from t in _context.Shapes
+                               where t.IDPro == id
+                               select t.ID).ToList();
 
-        //}
+                    foreach ( var x in lstidShape )
+                    {
+                        var infor = (from z in _context.Infors
+                                   where z.ID == x
+                                   select z).SingleOrDefault();
+                        if ( infor != null)
+                        {
+                            _context.Infors.Remove(infor);
+                        }    
+                    }
+                    
+                    foreach ( var x in lstidShape )
+                    {
+                        var sh = (from s in _context.Shapes
+                                  where s.ID == x
+                                  select s).SingleOrDefault();
+                        _context.Shapes.Remove(sh);
+                    }
+
+                    var pr = (from q in _context.ProjectShapes
+                              where q.IDPro == id
+                              select q).SingleOrDefault();
+                    _context.ProjectShapes.Remove(pr);
+                    _context.SaveChanges();
+                    return false;
+
+                } catch(Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    return false;
+                }
+            }    
+        }
     }
 }

@@ -29,6 +29,17 @@ namespace So_Do_Tu_Duy.Controller
             }
         }
 
+        public static List<Shape> CheckShape(int id)
+        {
+            using (var _context = new DBMindMapEntities())
+            {
+                var sh = (from t in _context.Shapes
+                          where t.ID == id
+                          select t).ToList();
+                return sh;
+            }
+        }
+
         public static List<Shape> getListShape(int id)
         {
             using (var _context = new DBMindMapEntities())

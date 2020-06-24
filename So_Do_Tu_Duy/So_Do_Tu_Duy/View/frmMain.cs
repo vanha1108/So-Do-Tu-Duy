@@ -39,11 +39,12 @@ namespace So_Do_Tu_Duy
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            idPro++;
             frmMain fMain = new frmMain();
             fMain.Close();
             frmMap formMap = new frmMap();
-            formMap.ShowDialog();         
+            formMap.ShowDialog();
+            frmOutliner.note = "";
+            btnCreate.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,7 +62,7 @@ namespace So_Do_Tu_Duy
                 source.DataSource = ProjectController.getListProject();
                 fListPr.dtgvListProject.DataSource = source;
                 fListPr.dtgvListProject.Columns["Shapes"].Visible = false;
-            }             
+            }                
         }
     }
 }

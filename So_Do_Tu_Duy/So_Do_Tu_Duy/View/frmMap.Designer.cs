@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMap));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnMainTopic = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnRelationship = new System.Windows.Forms.Button();
             this.btnTopic = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@
             this.outlinerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ptbDraw = new System.Windows.Forms.PictureBox();
             this.btnCloseMap = new System.Windows.Forms.Button();
-            this.btnMainTopic = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbDraw)).BeginInit();
@@ -57,6 +57,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1182, 90);
             this.panel1.TabIndex = 0;
+            // 
+            // btnMainTopic
+            // 
+            this.btnMainTopic.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnMainTopic.Image = ((System.Drawing.Image)(resources.GetObject("btnMainTopic.Image")));
+            this.btnMainTopic.Location = new System.Drawing.Point(596, 24);
+            this.btnMainTopic.Name = "btnMainTopic";
+            this.btnMainTopic.Size = new System.Drawing.Size(155, 49);
+            this.btnMainTopic.TabIndex = 2;
+            this.btnMainTopic.Text = "Main Topic";
+            this.btnMainTopic.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMainTopic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnMainTopic.UseVisualStyleBackColor = false;
+            this.btnMainTopic.Click += new System.EventHandler(this.btnMainTopic_Click);
             // 
             // btnExport
             // 
@@ -160,16 +174,6 @@
             this.btnCloseMap.TabIndex = 3;
             this.btnCloseMap.UseVisualStyleBackColor = true;
             this.btnCloseMap.Click += new System.EventHandler(this.btnCloseMap_Click);
-            // 
-            // btnMainTopic
-            // 
-            this.btnMainTopic.Location = new System.Drawing.Point(596, 24);
-            this.btnMainTopic.Name = "btnMainTopic";
-            this.btnMainTopic.Size = new System.Drawing.Size(155, 49);
-            this.btnMainTopic.TabIndex = 2;
-            this.btnMainTopic.Text = "Main Topic";
-            this.btnMainTopic.UseVisualStyleBackColor = true;
-            this.btnMainTopic.Click += new System.EventHandler(this.btnMainTopic_Click);
             // 
             // frmMap
             // 

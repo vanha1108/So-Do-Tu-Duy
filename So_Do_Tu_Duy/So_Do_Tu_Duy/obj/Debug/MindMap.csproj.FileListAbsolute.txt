@@ -11,7 +11,6 @@ C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Du
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.frmMap.resources
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.frmOutliner.resources
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.Properties.Resources.resources
-C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\So_Do_Tu_Duy.UCOutliner.resources
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csproj.GenerateResource.cache
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csproj.CoreCompileInputs.cache
 C:\Users\TT\Desktop\So-Do-Tu-Duy\So_Do_Tu_Duy\So_Do_Tu_Duy\obj\Debug\MindMap.csproj.CopyComplete
